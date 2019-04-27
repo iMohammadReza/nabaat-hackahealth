@@ -4,6 +4,8 @@ import { Input, Item, Button, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
+import cancerImg from '../assets/cancer.png';
+
 const win = Dimensions.get('window');
 
 @inject('store') @observer
@@ -79,15 +81,15 @@ export default class ProfileInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
+          <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
             <Item style={{width: 160}}>
-              <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
-              <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
-              <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
-              <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
+              <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
+              <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
+              <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+              <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
               {sex == 1 ?
-                <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
                 :
                 null
               }
@@ -96,8 +98,8 @@ export default class ProfileInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendProfile()}>
-                  <Text style={{ color: '#ffffff'}}>ارسال</Text>
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendProfile()}>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: 14, color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -106,7 +108,7 @@ export default class ProfileInput extends React.Component {
             ref="toast"
             style={{backgroundColor:'red'}}
             position='top'
-            positionValue={200}
+            positionValue={150}
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}

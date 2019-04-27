@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Button, Container, Spinner } from 'native-base';
+import { Input, Form, Item, Button, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
+
+import cancerImg from '../assets/cancer.png';
 
 const win = Dimensions.get('window');
 
@@ -59,17 +61,19 @@ export default class PhoneInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
-            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
-            <Item style={{width: 160}}>
-              <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
-            </Item>
+          <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
+            <Image style={{ width: 80, height: null }} source={ cancerImg } />
+            <Form>
+              <Item floatingLabel style={{ width: 160 }}>
+                <Input value={this.state.mobile} style={{ fontFamily: "IRANSansMobile", fontSize: 14, marginTop: 40 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
+              </Item>
+            </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendPhone()}>
-                  <Text style={{ color: '#ffffff'}}>ارسال کد تایید</Text>
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendPhone()}>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: 14, color: '#ffffff'}}>ارسال کد تایید</Text>
                 </Button>
               }
             </View>
@@ -78,7 +82,7 @@ export default class PhoneInput extends React.Component {
             ref="toast"
             style={{backgroundColor:'red'}}
             position='top'
-            positionValue={200}
+            positionValue={150}
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}

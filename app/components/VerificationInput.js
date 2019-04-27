@@ -3,7 +3,6 @@ import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react
 import { Input, Item, Button, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
-import { threadId } from 'worker_threads';
 
 const win = Dimensions.get('window');
 
@@ -59,17 +58,19 @@ export default class VerificationInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
+          <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
-            <Item style={{width: 160}}>
-              <Input value={this.state.code} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
-            </Item>
+            <Form>
+              <Item floatingLabel style={{ width: 160 }}>
+                <Input value={this.state.code} style={{ fontFamily: "IRANSansMobile", fontSize: 14, marginTop: 50 }} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
+              </Item>
+            </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendVerification()}>
-                  <Text style={{ color: '#ffffff'}}>ارسال</Text>
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendPhone()}>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: 14, color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -78,7 +79,7 @@ export default class VerificationInput extends React.Component {
             ref="toast"
             style={{backgroundColor:'red'}}
             position='top'
-            positionValue={200}
+            positionValue={150}
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}
