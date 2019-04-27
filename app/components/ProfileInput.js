@@ -1,14 +1,9 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-<<<<<<< HEAD
 import { Input, Item, Button, Container, Spinner } from 'native-base';
-=======
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Input, Item, Button, Container } from 'native-base';
->>>>>>> 13f436d9ef36e90fa67bdc3e87732b9141059f1b
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import cancerImg from '../assets/cancer.png';
 
 const win = Dimensions.get('window');
