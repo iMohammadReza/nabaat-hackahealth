@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Container, Spinner } from 'native-base';
+import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Input, Item, Button, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -54,21 +54,23 @@ export default class PhoneInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#f47983' }}>
+        <Container style={{ backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
-            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#1780AC', padding: 32 }}>بوووب اپ</Text>
-            <Item>
-              <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12}} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
+            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
+            <Item style={{width: 160}}>
+              <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
             </Item>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#179BBA'/>
+                <Spinner color='#f47983'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendPhone()} title="ارسال کد تایید" />
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendPhone()}>
+                  <Text style={{ color: '#ffffff'}}>ارسال کد تایید</Text>
+                </Button>
               }
             </View>
           </View>

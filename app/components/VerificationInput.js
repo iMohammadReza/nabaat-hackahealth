@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Container } from 'native-base';
+import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Input, Item, Button, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 import { threadId } from 'worker_threads';
@@ -54,21 +54,23 @@ export default class VerificationInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#f47983' }}>
+        <Container style={{ backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
-            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#1780AC', padding: 32 }}>بوووب اپ</Text>
-            <Item>
-              <Input value={this.state.code} style={{fontFamily: "IRANSansMobile", fontSize: 12}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
+            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
+            <Item style={{width: 160}}>
+              <Input value={this.state.code} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
             </Item>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#179BBA'/>
+                <Spinner color='#f47983'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendVerification()} title="ارسال" />
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendVerification()}>
+                  <Text style={{ color: '#ffffff'}}>ارسال</Text>
+                </Button>
               }
             </View>
           </View>
