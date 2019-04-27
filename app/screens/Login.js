@@ -1,6 +1,7 @@
 import React from 'react'
 import PhoneInput from '../components/PhoneInput';
-import VerificationInput from '../components/PhoneInput';
+import VerificationInput from '../components/VerificationInput';
+import ProfileInput from '../components/ProfileInput';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class Login extends React.Component {
             )
         } else if(stage == 2){
             return(
-                <VerificationInput advanceToQuestions={this.advanceToQuestions} />
+                <ProfileInput advanceToQuestions={this.advanceToQuestions} />
             )
         }
     }
