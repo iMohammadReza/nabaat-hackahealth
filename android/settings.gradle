@@ -1,0 +1,3 @@
+rootProject.name = 'nabaat_hackahealth'
+
+include ':app'
