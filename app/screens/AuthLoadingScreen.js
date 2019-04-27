@@ -17,10 +17,10 @@ export default class AuthLoadingScreen extends React.Component {
     break;
   
     componentDidMount = () => {
-      this._bootstrapAsync()
-      // setTimeout(() => {
-      //     this._bootstrapAsync()
-      // }, 4000)
+      // this._bootstrapAsync()
+      setTimeout(() => {
+          this._bootstrapAsync()
+      }, 4000)
     }
     _bootstrapAsync = async () => {
       try {
@@ -59,7 +59,7 @@ export default class AuthLoadingScreen extends React.Component {
               <LottieView
                   source={splash}
                   autoPlay
-                  style={{backgroundColor:"red", width: 500, height:500}}
+                  style={{ width: 500, height:500}}
               />
               <Text style={{fontFamily:"IRANSansMobile_Bold", color:"#22b4c5", fontSize:28, margin:16, textAlign:"center"}} > من</Text>
             </View>

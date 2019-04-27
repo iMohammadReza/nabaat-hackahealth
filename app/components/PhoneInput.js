@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Input, Form, Item, Button, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
@@ -61,8 +62,8 @@ export default class PhoneInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
-            <Image style={{ width: 79.75, height: 128 }} source={ cancerImg } />
+          <View padder style={{ justifyContent: 'center', alignItems:"center" }}>
+            <Image style={{ width: wp('15%'), height: hp('15%') }} source={ cancerImg } />
             <Form>
               <Item floatingLabel style={{ width: 160 }}>
                 <Input value={this.state.mobile} style={{ fontFamily: "IRANSansMobile", fontSize: 14, marginTop: 40 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
