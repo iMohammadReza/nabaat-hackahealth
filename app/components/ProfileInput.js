@@ -89,7 +89,7 @@ export default class ProfileInput extends React.Component {
               <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
               <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
               <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
-              {sex == 1 ?
+              {this.state.sex == 1 ?
                 <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
                 :
                 null

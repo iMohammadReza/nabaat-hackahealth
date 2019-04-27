@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Button, Container } from 'native-base';
+import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -21,12 +21,13 @@ export default class VerificationInput extends React.Component {
     }
 
     sendVerification = async () => {
-      if(this.state.code.length>6){
+      if(this.state.code.length>3){
         this.setState({loading: true})
+        console.log({ token: this.state.code, phone: this.props.mobile })
         let phoneReq = this.props.store.AuthStore.webService + 'verify'; // set the code validation
         fetch(phoneReq, {
           method: 'POST',
-          body: JSON.stringify({ 'token': this.state.code, phone: this.props.mobile }),
+          body: JSON.stringify({ token: this.state.code, phone: this.props.mobile }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -39,10 +40,11 @@ export default class VerificationInput extends React.Component {
             this.props.advanceToProfile()
           } else {
             this.refs.toast.show(responseJson.error, 2000);
+            this.setState({loading: false})
           }
         })
         .catch((error) => {
-          
+          console.log(error)
           this.setState({loadingPhone: false})
           this.refs.toast.show("خطا در برقراری ارتباط با اینترنت", 2000);
         });
@@ -69,7 +71,7 @@ export default class VerificationInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendPhone()}>
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendVerification()}>
                   <Text style={{ fontFamily: "IRANSansMobile", fontSize: 14, color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
