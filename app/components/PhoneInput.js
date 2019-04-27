@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Container } from 'native-base';
+import { Input, Item, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -23,10 +23,10 @@ export default class PhoneInput extends React.Component {
     sendPhone = async () => {
       if(this.state.mobile.length>6){
         this.setState({loading: true})
-        let phoneReq = this.props.store.AuthStore.webService + 'new_token'; // set the phone request
+        let phoneReq = this.props.store.AuthStore.webService + 'phone'; // set the phone request
         fetch(phoneReq, {
           method: 'POST',
-          body: JSON.stringify({ 'mobile': this.state.mobile }),
+          body: JSON.stringify({ 'phone': this.state.mobile }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -36,15 +36,15 @@ export default class PhoneInput extends React.Component {
         .then((responseJson) => {
           
             this.setState({loading: false})
-            if (responseJson.status == 404) {
+            if (!responseJson.success) {
               this.refs.toast.show(responseJson.error, 2000);
             } else {
                 this.props.advanceToVerification();
             }
         })
         .catch((error) => {
-          
           this.setState({loadingPhone: false})
+          console.log(error)
           this.refs.toast.show("خطا در برقراری ارتباط با اینترنت", 2000);
         });
       } else {
@@ -68,7 +68,7 @@ export default class PhoneInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#179BBA'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendPhone()} text="ارسال کد تایید" />
+                <Button style={{marginTop:32}} onPress={() => this.sendPhone()} title="ارسال کد تایید" />
               }
             </View>
           </View>

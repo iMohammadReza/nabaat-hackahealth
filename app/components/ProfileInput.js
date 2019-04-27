@@ -96,7 +96,7 @@ export default class ProfileInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#179BBA'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendProfile()} text="ارسال" />
+                <Button style={{marginTop:32}} onPress={() => this.sendProfile()} title="ارسال" />
               }
             </View>
           </View>

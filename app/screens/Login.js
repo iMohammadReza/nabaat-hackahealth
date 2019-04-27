@@ -28,15 +28,15 @@ export default class Login extends React.Component {
         let { stage } = this.state;
         if(stage == 0){
             return(
-                <PhoneInput advanceToVerification={this.advanceToVerification} />
+                <PhoneInput advanceToVerification={()=>this.advanceToVerification()} />
             );
         } else if(stage == 1){
             return(
-                <VerificationInput advanceToProfile={this.advanceToProfile} />
+                <VerificationInput advanceToProfile={()=>this.advanceToProfile()} />
             )
         } else if(stage == 2){
             return(
-                <ProfileInput advanceToQuestions={this.advanceToQuestions} />
+                <ProfileInput advanceToQuestions={()=>this.advanceToQuestions()} />
             )
         }
     }

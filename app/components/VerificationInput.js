@@ -68,7 +68,7 @@ export default class VerificationInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#179BBA'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendVerification()} text="ارسال" />
+                <Button style={{marginTop:32}} onPress={() => this.sendVerification()} title="ارسال" />
               }
             </View>
           </View>
