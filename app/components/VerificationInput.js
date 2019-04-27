@@ -3,6 +3,7 @@ import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } fro
 import { Input, Item, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
+import { threadId } from 'worker_threads';
 
 const win = Dimensions.get('window');
 
@@ -23,10 +24,10 @@ export default class VerificationInput extends React.Component {
     sendVerification = async () => {
       if(this.state.code.length>6){
         this.setState({loading: true})
-        let phoneReq = this.props.store.AuthStore.webService + 'new_token'; // set the code validation
+        let phoneReq = this.props.store.AuthStore.webService + 'verify'; // set the code validation
         fetch(phoneReq, {
           method: 'POST',
-          body: JSON.stringify({ 'code': this.state.code }),
+          body: JSON.stringify({ 'token': this.state.code, phone: this.props.mobile }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -34,13 +35,12 @@ export default class VerificationInput extends React.Component {
         })
         .then((response) => response.json().then(data => ({status: response.status, ...data})))
         .then((responseJson) => {
-          
-            this.setState({loading: false})
-            if (responseJson.status == 404) {
-              this.refs.toast.show(responseJson.error, 2000);
-            } else {
-                this.props.advanceToProfile();
-            }
+          if(responseJson.success){
+            this.props.store.AuthStore.addUserToken(responseJson.token)
+            this.props.advanceToProfile()
+          } else {
+            this.refs.toast.show(responseJson.error, 2000);
+          }
         })
         .catch((error) => {
           

@@ -75,6 +75,9 @@
 		86A326ACCFA4419E92D8D36F /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A663894F3D8740EB9925119E /* rubicon-icon-font.ttf */; };
 		7AA27DC61FBF413D8541525A /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5C89CD2689469AAB3C0F8E /* SimpleLineIcons.ttf */; };
 		5FA350855A1646CBBE1B1EA3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B40F6A1F049518BF44FC6 /* Zocial.ttf */; };
+		EDEBA1611F4F4CABB6557FC4 /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBAC60526CEF40EB968F6AF7 /* IRANSansMobile_Bold.ttf */; };
+		294485D702444F2597042BE6 /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35E3E5761F7D4CCFB9460088 /* IRANSansMobile_Light.ttf */; };
+		03CE570FC4E14F61A73A30DF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 856AAE5BA72D4CCF948CE309 /* IRANSansMobile.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +423,9 @@
 		A663894F3D8740EB9925119E /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5B5C89CD2689469AAB3C0F8E /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2C0B40F6A1F049518BF44FC6 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DBAC60526CEF40EB968F6AF7 /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile_Bold.ttf"; path = "../app/assets/fonts/IRANSansMobile_Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		35E3E5761F7D4CCFB9460088 /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile_Light.ttf"; path = "../app/assets/fonts/IRANSansMobile_Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		856AAE5BA72D4CCF948CE309 /* IRANSansMobile.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile.ttf"; path = "../app/assets/fonts/IRANSansMobile.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -726,6 +732,9 @@
 				A663894F3D8740EB9925119E /* rubicon-icon-font.ttf */,
 				5B5C89CD2689469AAB3C0F8E /* SimpleLineIcons.ttf */,
 				2C0B40F6A1F049518BF44FC6 /* Zocial.ttf */,
+				DBAC60526CEF40EB968F6AF7 /* IRANSansMobile_Bold.ttf */,
+				35E3E5761F7D4CCFB9460088 /* IRANSansMobile_Light.ttf */,
+				856AAE5BA72D4CCF948CE309 /* IRANSansMobile.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1210,6 +1219,9 @@
 				86A326ACCFA4419E92D8D36F /* rubicon-icon-font.ttf in Resources */,
 				7AA27DC61FBF413D8541525A /* SimpleLineIcons.ttf in Resources */,
 				5FA350855A1646CBBE1B1EA3 /* Zocial.ttf in Resources */,
+				EDEBA1611F4F4CABB6557FC4 /* IRANSansMobile_Bold.ttf in Resources */,
+				294485D702444F2597042BE6 /* IRANSansMobile_Light.ttf in Resources */,
+				03CE570FC4E14F61A73A30DF /* IRANSansMobile.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

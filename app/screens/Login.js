@@ -7,13 +7,14 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            mobile: null,
             stage: 0, // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
 
         }
     }
     
-    advanceToVerification() {
-        this.setState({ stage: 1 });
+    advanceToVerification(mobile) {
+        this.setState({ stage: 1, mobile });
     }
 
     advanceToProfile() {
@@ -32,7 +33,7 @@ export default class Login extends React.Component {
             );
         } else if(stage == 1){
             return(
-                <VerificationInput advanceToProfile={()=>this.advanceToProfile()} />
+                <VerificationInput mobile={this.state.mobile} advanceToProfile={()=>this.advanceToProfile()} />
             )
         } else if(stage == 2){
             return(

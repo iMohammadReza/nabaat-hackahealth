@@ -39,7 +39,7 @@ export default class PhoneInput extends React.Component {
             if (!responseJson.success) {
               this.refs.toast.show(responseJson.error, 2000);
             } else {
-                this.props.advanceToVerification();
+                this.props.advanceToVerification(this.state.mobile);
             }
         })
         .catch((error) => {
