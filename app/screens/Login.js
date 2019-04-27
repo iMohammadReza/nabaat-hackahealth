@@ -1,5 +1,6 @@
 import React from 'react'
 import PhoneInput from '../components/PhoneInput';
+import VerificationInput from '../components/PhoneInput';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -9,14 +10,33 @@ export default class Login extends React.Component {
 
         }
     }
-     render() {
-        switch (this.state.stage) {
-            case 0:
-                return (
-                    <PhoneInput />
-                );
-            default:
-                break;
+    
+    advanceToVerification() {
+        this.setState({ stage: 1 });
+    }
+
+    advanceToProfile() {
+        this.setState({ stage: 2 });
+    }
+
+    advanceToQuestions() {
+        this.setState({ stage: 3 });
+    }
+
+    render() {
+        let { stage } = this.state;
+        if(stage == 0){
+            return(
+                <PhoneInput advanceToVerification={this.advanceToVerification} />
+            );
+        } else if(stage == 1){
+            return(
+                <VerificationInput advanceToProfile={this.advanceToProfile} />
+            )
+        } else if(stage == 2){
+            return(
+                <VerificationInput advanceToQuestions={this.advanceToQuestions} />
+            )
         }
-     }
+    }
 }
