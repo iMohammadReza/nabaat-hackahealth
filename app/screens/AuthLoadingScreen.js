@@ -17,10 +17,10 @@ export default class AuthLoadingScreen extends React.Component {
     break;
   
     componentDidMount = () => {
-      // this._bootstrapAsync()
-      setTimeout(() => {
-          this._bootstrapAsync()
-      }, 4000)
+     this._bootstrapAsync()
+      // setTimeout(() => {
+      //     this._bootstrapAsync()
+      // }, 4000)
     }
     _bootstrapAsync = async () => {
       try {
