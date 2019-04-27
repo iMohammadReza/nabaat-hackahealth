@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Input, Item, Button, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
