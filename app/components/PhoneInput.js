@@ -60,17 +60,6 @@ export default class PhoneInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <ImageBackground
-            style={{
-              backgroundColor: '#f47983',
-              flex: 1,
-              position: 'absolute',
-              width: win.width,
-              height: win.height / 3,
-              bottom:0,
-              left:0,
-            }}
-            source={ bubbles } />
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#1780AC', padding: 32 }}>بوووب اپ</Text>
             <Item>
