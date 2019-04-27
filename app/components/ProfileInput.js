@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Input, Item, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -81,8 +82,8 @@ export default class ProfileInput extends React.Component {
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#1780AC', padding: 32 }}>بوووب اپ</Text>
             <Item>
-              <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
               <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
+              <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
               <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
               <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
               {sex == 1 ?

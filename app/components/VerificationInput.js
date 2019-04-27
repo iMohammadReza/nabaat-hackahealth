@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Button, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Input, Item, Container } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
