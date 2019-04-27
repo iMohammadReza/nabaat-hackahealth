@@ -62,7 +62,7 @@ export default class PhoneInput extends React.Component {
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
-            <Image style={{ width: 80, height: null }} source={ cancerImg } />
+            <Image style={{ width: 79.75, height: 128 }} source={ cancerImg } />
             <Form>
               <Item floatingLabel style={{ width: 160 }}>
                 <Input value={this.state.mobile} style={{ fontFamily: "IRANSansMobile", fontSize: 14, marginTop: 40 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />

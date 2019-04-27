@@ -14,7 +14,7 @@ export default class Login extends React.Component {
     }
     
     advanceToVerification(mobile) {
-        this.setState({ stage: 1, mobile });
+        this.setState({ stage: 1, mobile }, ()=>console.log(this.state));
     }
 
     advanceToProfile() {
@@ -29,7 +29,7 @@ export default class Login extends React.Component {
         let { stage } = this.state;
         if(stage == 0){
             return(
-                <PhoneInput advanceToVerification={()=>this.advanceToVerification()} />
+                <PhoneInput advanceToVerification={(mobile)=>this.advanceToVerification(mobile)} />
             );
         } else if(stage == 1){
             return(
