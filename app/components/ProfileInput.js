@@ -57,8 +57,6 @@ export default class ProfileInput extends React.Component {
             this.setState({loading: false})
             if (responseJson.status == 404) {
               this.refs.toast.show(responseJson.error, 2000);
-            } else if (responseJson.status == 422) {
-              this.refs.toast.show(responseJson.mobile[0], 2000);
             } else {
                 this.props.advanceToProfile();
             }
