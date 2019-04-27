@@ -10,8 +10,13 @@ export default class Login extends React.Component {
         }
     }
      render() {
-        return (
-          <PhoneInput />
-        );
+        switch (this.state.stage) {
+            case 0:
+                return (
+                    <PhoneInput />
+                );
+            default:
+                break;
+        }
      }
 }

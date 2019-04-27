@@ -162,43 +162,34 @@ class DataStorage {
   //   })
   // }
 
-  // getInit(){
-  //   return new Promise((resolve, reject) => {
-  //     let req = AuthStore.webService+"?version="+2
-  //     fetch(req, {
-  //       method: 'GET',
-  //       headers:{
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //         'Token': AuthStore.userToken
-  //       }
-  //     })
-  //     .then((response) => response.json().then(data => ({status: response.status, ...data})))
-  //     .then((responseJson) => {
-  //       if (responseJson.status == 401) {
-  //         reject(401)
-  //       } else {
-  //         this.user = responseJson.user
-  //         this.tax = responseJson.tax
-  //         this.discount = responseJson.discount
-  //         this.carouselImages = responseJson.slides
-  //         this.service = responseJson.service
-  //         this.bills = responseJson.bills
-  //         this.notifications = responseJson.notifications
-  //         this.tickets = responseJson.tickets
-  //         this.update = responseJson.update
-  //         this.about = responseJson.about
-  //         this.contact = responseJson.contact
-  //         resolve(responseJson)
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log("getInit error", error)
-  //       ToastAndroid.show("خطا در برقراری ارتباط", ToastAndroid.SHORT)
-  //       reject()
-  //     });
-  //   })
-  // }
+  getInit(){
+    return new Promise((resolve, reject) => {
+      let req = AuthStore.webService+"home"
+      fetch(req, {
+        method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "token": AuthStore.userToken,
+        })
+      })
+      .then((response) => response.json().then(data => ({status: response.status, ...data})))
+      .then((responseJson) => {
+        if (responseJson.success) {
+          resolve(responseJson)
+        } else {
+          reject()
+        }
+      })
+      .catch((error) => {
+        console.log("getInit error", error)
+        ToastAndroid.show("خطا در برقراری ارتباط", ToastAndroid.SHORT)
+        reject()
+      });
+    })
+  }
 
   // getServices(){
   //   return new Promise((resolve, reject) => {

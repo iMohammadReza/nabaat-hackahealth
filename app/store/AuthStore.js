@@ -2,7 +2,7 @@ import {observable} from 'mobx';
 import { AsyncStorage } from 'react-native';
 
 class AuthStorage {
-  @observable webService = "http://api.padidar.com/v1/"
+  @observable webService = "https://hackahealth.liara.run/api/v1/appApi/"
   @observable userToken = ""
 
   addUserToken = (token) => {
