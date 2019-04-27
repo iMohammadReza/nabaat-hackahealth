@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Home from "./app/screens/Home";
-
+import SwitchStack from "./app/index";
 export default class nabaat extends Component {
   render() {
     return (
-      <Home/>
+      <SwitchStack />
     );
   }
 }
