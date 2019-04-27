@@ -54,12 +54,12 @@ export default class PhoneInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <Container style={{ backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ flex: 1, margin:16, alignItems:"center", marginTop:40 }}>
+          <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
             <Item style={{width: 160}}>
               <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20 }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />

@@ -81,7 +81,7 @@ export default class ProfileInput extends React.Component {
             translucent={false} />
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
-            <Item>
+            <Item style={{width: 160}}>
               <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
               <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
               <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 12}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
@@ -96,7 +96,9 @@ export default class ProfileInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendProfile()} title="ارسال" />
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendProfile()}>
+                  <Text style={{ color: '#ffffff'}}>ارسال</Text>
+                </Button>
               }
             </View>
           </View>

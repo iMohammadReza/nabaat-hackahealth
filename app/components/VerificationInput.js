@@ -61,14 +61,16 @@ export default class VerificationInput extends React.Component {
             translucent={false} />
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
-            <Item>
-              <Input value={this.state.code} style={{fontFamily: "IRANSansMobile", fontSize: 12}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
+            <Item style={{width: 160}}>
+              <Input value={this.state.code} style={{fontFamily: "IRANSansMobile", fontSize: 12, marginTop: 20}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
             </Item>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <Button style={{ backgroundColor: '#f47983', color: '#f47983'}} onPress={() => this.sendVerification()} title="ارسال" />
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 100, width: 160 }} onPress={() => this.sendVerification()}>
+                  <Text style={{ color: '#ffffff'}}>ارسال</Text>
+                </Button>
               }
             </View>
           </View>
