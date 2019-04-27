@@ -2,7 +2,7 @@ import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import Survey from "./screens/Survey"
 import Game from "./screens/Game"
 import Home from "./screens/Home";
-import LoginScreen from "./screens/LoginScreen"
+import Login from "./screens/Login"
 import AuthLoadingScreen from "./screens/AuthLoadingScreen"
 
 const AppStack = createStackNavigator(
@@ -18,7 +18,7 @@ const AppStack = createStackNavigator(
 
 const AuthStack = createStackNavigator(
   {
-      Login: LoginScreen
+      Login: Login
   },
   {
       headerMode: 'none'
