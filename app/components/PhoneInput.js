@@ -71,7 +71,7 @@ export default class PhoneInput extends React.Component {
             </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#f47983'/>
+                <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
               :
                 <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
                   <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('3%'), color: '#ffffff'}}>ارسال کد تایید</Text>
@@ -83,11 +83,11 @@ export default class PhoneInput extends React.Component {
             ref="toast"
             style={{backgroundColor:'red'}}
             position='top'
-            positionValue={150}
+            positionValue={hp('40%')}
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}
-            textStyle={{color:'white', fontFamily:"IRANSansMobile"}}
+            textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('3%')}}
           />
         </Container>
       );
