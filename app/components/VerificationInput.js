@@ -6,26 +6,26 @@ import Toast from 'react-native-easy-toast';
 const win = Dimensions.get('window');
 
 @inject('store') @observer
-export default class PhoneInput extends React.Component {
+export default class VerificationInput extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            mobile: '',
+            code: '',
             loading: false,
         }
     }
 
-    onChangeMobile = (mobile) => {
-      this.setState({ mobile });
+    onChangeCode = (code) => {
+      this.setState({ code });
     }
 
     sendPhone = async () => {
-      if(this.state.mobile.length>6){
+      if(this.state.code.length>6){
         this.setState({loading: true})
-        let phoneReq = this.props.store.AuthStore.webService + 'new_token'; // set the phone request
+        let phoneReq = this.props.store.AuthStore.webService + 'new_token'; // set the code validation
         fetch(phoneReq, {
           method: 'POST',
-          body: JSON.stringify({ 'mobile': this.state.mobile }),
+          body: JSON.stringify({ 'code': this.state.code }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ export default class PhoneInput extends React.Component {
             } else if (responseJson.status == 422) {
               this.refs.toast.show(responseJson.mobile[0], 2000);
             } else {
-                this.props.advanceToVerification();
+                this.props.advanceToProfile();
             }
         })
         .catch((error) => {
@@ -49,7 +49,7 @@ export default class PhoneInput extends React.Component {
           this.refs.toast.show("خطا در برقراری ارتباط با اینترنت", 2000);
         });
       } else {
-        this.refs.toast.show("فیلد شماره همراه را کامل وارد کنید.", 2000);
+        this.refs.toast.show("فیلد کد را کامل وارد کنید.", 2000);
       }
     }
 
@@ -74,13 +74,13 @@ export default class PhoneInput extends React.Component {
           <View padder style={{ margin:16, alignItems:"center", marginTop:40 }}>
             <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#1780AC', padding: 32 }}>بوووب اپ</Text>
             <Item>
-              <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12}} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
+              <Input value={this.state.mobile} style={{fontFamily: "IRANSansMobile", fontSize: 12}} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeMobile(text)} />
             </Item>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#179BBA'/>
               :
-                <Button style={{marginTop:32}} onPress={() => this.sendPhone()} text="ارسال کد تایید" />
+                <Button style={{marginTop:32}} onPress={() => this.sendPhone()} text="ارسال" />
               }
             </View>
           </View>
