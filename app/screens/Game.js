@@ -174,13 +174,15 @@ export default class Game extends React.Component {
         <View style={{ flex: 2, margin: '7%', borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
 
           <Image source={ gameObjects.desk.src } style={{ flex: 1, position: 'absolute', top: hp('12%'), right: wp('3%'), width: wp('75%'), height: hp('75%'), resizeMode: 'contain'}} />
-          <Image source={ framePF } style={{ flex: 1, position: 'absolute', left: 450, bottom: 450, width: 125, height: 125, resizeMode: 'contain'}} />
+          <Image source={ framePF } style={{ flex: 1, position: 'absolute', left: wp('60%'), bottom: hp('45%'), width: wp('13%'), height: hp('13%'), resizeMode: 'contain'}} />
 
           {this.state.khaze &&
           <Image source={ gameObjects.khaze.src } style={{ flex: 1, position: 'absolute', left: 230, bottom: 305, width: 75, height: 75, resizeMode: 'contain'}} />}
           {this.state.fish01 &&
           <Image source={ gameObjects.fish01.src } style={{ flex: 1, position: 'absolute', left: 210, bottom: 318, width: 70, height: 70, resizeMode: 'contain'}} />}
-          <Image source={ gameObjects.tank.src } style={{ flex: 1, position: 'absolute', left: 200, bottom: 280, width: 120, height: 120, resizeMode: 'contain'}} />
+
+          <Image source={ gameObjects.tank.src } style={{ flex: 1, position: 'absolute', left: wp('26%'), bottom: hp('27%'), width: wp('14%'), height: hp('14%'), resizeMode: 'contain'}} />
+          
           {this.state.books &&
           <Image source={ gameObjects.books.src } style={{ flex: 1, position: 'absolute', left: 300, bottom: 20, width: 110, height: 110, resizeMode: 'contain'}} />}
           {this.state.chair &&
