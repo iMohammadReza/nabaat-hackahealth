@@ -6,6 +6,7 @@ import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
 import phone from '../assets/phone.png';
+import ribbon from '../assets/ribbon.png'
 
 const win = Dimensions.get('window');
 
@@ -73,7 +74,7 @@ export default class PhoneInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
+                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
                   <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>ارسال کد تایید</Text>
                 </Button>
               }
