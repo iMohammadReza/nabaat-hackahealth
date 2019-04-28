@@ -9,21 +9,7 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             mobile: null,
-            q: {
-                "id": 1,
-                "title": "آیا سرطان شما تشخیص داده شده است؟",
-                "options": [
-                    {
-                        "text": "بله",
-                        "qid": 1
-                    },
-                    {
-                        "text": "خیر!",
-                        "qid": 2
-                    }
-                ],
-                "fvalue": 0
-            },
+            q: null,
             stage: 0 // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
         }
     }
@@ -56,7 +42,7 @@ export default class Login extends React.Component {
             )
         } else if(stage == 3){
             return(
-                <QuestionsInput q={this.state.q} />
+                <QuestionsInput  navigation={this.props.navigation}  q={this.state.q} />
             )
         }
     }

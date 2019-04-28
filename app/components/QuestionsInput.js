@@ -43,10 +43,12 @@ export default class QuestionsInput extends React.Component {
           console.log(responseJson)
             this.setState({loading: false})
             if (responseJson.success) {
-              this.setState({ q: responseJson.data });
-            } else {
+              if(responseJson.finished)
+                this.goToHome(responseJson)
+              else
+                this.setState({ q: responseJson.data });
+            } else
               this.refs.toast.show(responseJson.error, 2000);
-            }
         })
         .catch((error) => {
           console.log(error)
@@ -56,7 +58,10 @@ export default class QuestionsInput extends React.Component {
 
     }
 
-    goToHome = () => {
+    goToHome = (home) => {
+      this.props.store.DataStore.user = home.user
+      this.props.store.DataStore.tips = home.tips
+      this.props.store.DataStore.actions = home.actions
       this.props.store.AuthStore.saveToken()
       this.props.navigation.navigate('App')
     }

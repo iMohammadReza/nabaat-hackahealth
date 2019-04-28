@@ -7,8 +7,8 @@ import AuthLoadingScreen from "./screens/AuthLoadingScreen"
 
 const AppStack = createStackNavigator(
   {
-      Game: {screen: Game},
       Home: {screen: Home},
+      Game: {screen: Game},
       Survey: {screen: Survey},
   },
   {
@@ -18,7 +18,7 @@ const AppStack = createStackNavigator(
 
 const AuthStack = createStackNavigator(
   {
-      Login: Login
+      Login: {screen: Login}
   },
   {
       headerMode: 'none'
@@ -32,7 +32,7 @@ const SwitchStack = createSwitchNavigator(
     Auth: AuthStack,
   },
   {
-    initialRouteName: 'App',
+    initialRouteName: 'AuthLoading',
   }
 );
 

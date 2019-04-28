@@ -1,15 +1,30 @@
 import React from 'react'
-import {Text, View, FlatList} from 'react-native'
+import {Text, View, FlatList, StatusBar} from 'react-native'
 import {inject, observer} from "mobx-react/native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Container, Card, Button } from 'native-base';
 
 @inject('store') @observer
 export default class Home extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+        }
+      }
+
+      goGame = () => {
+        console.log("kir")
+        this.props.navigation.navigate('Game')
+      }
+
       render() {
         let {user, tips, actions} = this.props.store.DataStore
         return (
           <Container padder style={{backgroundColor:"white"}} >
+            <StatusBar
+              backgroundColor="white"
+              barStyle="dark-content"
+              translucent={false} />
             <View style={{flexDirection:"row", margin: wp('8%')}} >
               <Text style={{borderColor:"#ed8687", borderRadius:50, borderWidth: wp('1%'), padding:  wp('4%'), height:  wp('14%'), width:  wp('14%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >27</Text>
               <Text style={{alignSelf:"center", flex:1, textAlign:"left", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%')}} >سلام {user.name}</Text>
@@ -38,7 +53,7 @@ export default class Home extends React.Component {
                 />
               </Card>
             </View>
-            <Button style={{margin: wp('8%'), marginTop:0, backgroundColor:"#ed8687"}} onClick={() => this.props.navigation.navigate('App')} >
+            <Button style={{margin: wp('8%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={this.goGame} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >آکواریوم</Text>
             </Button>
           </Container>
