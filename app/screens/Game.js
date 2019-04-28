@@ -171,7 +171,7 @@ export default class Game extends React.Component {
         flexDirection: 'column',
         justifyContent: 'flex-end',
       }}>
-        <View style={{ width:wp('90%'), height:wp('90%'), alignSelf:'center', margin: 20, borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
+        <View style={{position: 'absolute', top: 0, width:wp('90%'), height:wp('90%'), alignSelf:'center', margin: 20, borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
 
           <Image source={ gameObjects.desk.src } style={{ flex: 1, position: 'absolute', top: hp('12%'), right: wp('3%'), width: wp('75%'), height: hp('75%'), resizeMode: 'contain'}} />
           <Image source={ framePF } style={{ flex: 1, position: 'absolute', left: wp('60%'), bottom: hp('45%'), width: wp('13%'), height: hp('13%'), resizeMode: 'contain'}} />
