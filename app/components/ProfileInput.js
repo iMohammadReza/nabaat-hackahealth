@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
-import { Input, Item, Button, Container, Spinner } from 'native-base';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -78,30 +79,40 @@ export default class ProfileInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#ffffff' }}>
+        <Container style={{ flex:1, backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ margin:16, justifyContent: 'center', alignItems:"center", marginTop:40 }}>
-            <Text style={{ textAlign: 'center', fontFamily: "IRANSansMobile_Bold", fontSize: 16, color: '#f47983', padding: 32 }}>بوووب اپ</Text>
-            <Item style={{width: 160}}>
-              <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
-              <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
-              <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
-              <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
-              {this.state.sex == 1 ?
-                <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
-                :
-                null
-              }
-            </Item>
+          <View padder style={{ justifyContent: 'center', alignItems:"center" }}>
+            <Image style={{margin: wp('5%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
+            <Form>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
+              </Item>
+                {this.state.sex == 1 ?
+                  <Item floatingLabel style={{ width: wp('50%') }}>
+                    <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                  </Item>
+                  :
+                  null
+                }
+            </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#f47983'/>
+                <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: 120, width: 160 }} onPress={() => this.sendProfile()}>
-                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: 14, color: '#ffffff'}}>ارسال</Text>
+                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('60%') / hp('2%'), color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -110,11 +121,11 @@ export default class ProfileInput extends React.Component {
             ref="toast"
             style={{backgroundColor:'red'}}
             position='top'
-            positionValue={150}
+            positionValue={hp('40%')}
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}
-            textStyle={{color:'white', fontFamily:"IRANSansMobile"}}
+            textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('60%') / hp('2%')}}
           />
         </Container>
       );
