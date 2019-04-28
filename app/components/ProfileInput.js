@@ -4,7 +4,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
-import cancerImg from '../assets/cancer.png';
+
+import profile from '../assets/profile.png';
 
 const win = Dimensions.get('window');
 
@@ -83,8 +84,8 @@ export default class ProfileInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ justifyContent: 'center', alignItems:"center" }}>
-            <Image style={{margin: wp('5%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
+          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+            <Image style={{margin: wp('10%'), width: wp('40%'), height: hp('25%') }} source={ profile } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
                 <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
@@ -105,13 +106,13 @@ export default class ProfileInput extends React.Component {
                   :
                   null
                 }
-            </Form>
+                </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
+                <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
-                  <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('60%') / hp('2%'), color: '#ffffff'}}>ارسال</Text>
+                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
+                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>ارسال کد تایید</Text>
                 </Button>
               }
             </View>

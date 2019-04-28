@@ -25,7 +25,6 @@ export default class Login extends React.Component {
                 "fvalue": 0
             },
             stage: 3 // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
-
         }
     }
     
