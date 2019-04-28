@@ -181,7 +181,7 @@ export default class Game extends React.Component {
           {this.state.fish01 &&
           <Image source={ gameObjects.fish01.src } style={{ flex: 1, position: 'absolute', left: 210, bottom: 318, width: 70, height: 70, resizeMode: 'contain'}} />}
 
-          <Image source={ gameObjects.tank.src } style={{ flex: 1, position: 'absolute', left: wp('26%'), bottom: hp('27%'), width: wp('14%'), height: hp('14%'), resizeMode: 'contain'}} />
+          <Image source={ gameObjects.tank.src } style={{ flex: 1, position: 'absolute', left: wp('26%'), bottom: wp('34.5%'), width: wp('14%'), height: hp('14%'), resizeMode: 'contain'}} />
           
           {this.state.books &&
           <Image source={ gameObjects.books.src } style={{ flex: 1, position: 'absolute', left: 300, bottom: 20, width: 110, height: 110, resizeMode: 'contain'}} />}
