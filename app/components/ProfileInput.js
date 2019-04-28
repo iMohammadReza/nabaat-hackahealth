@@ -13,11 +13,11 @@ export default class ProfileInput extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: 'qwertyuio',
-            phone2: 'qwertyuiop',
-            periodDay: 'qwertyui',
-            age: 'qwertyuio',
-            sex: 'qwewrtryuyiuoi',
+            name: '',
+            phone2: '',
+            periodDay: '',
+            age: '',
+            sex: '',
             loading: false,
         }
     }
@@ -47,9 +47,10 @@ export default class ProfileInput extends React.Component {
         this.setState({loading: true})
         let {name, phone2, periodDay, age, sex } = this.state
         let profileReq = this.props.store.AuthStore.webService + 'profile'; // set the profile
+        console.log(sex)
         fetch(profileReq, {
           method: 'POST',
-          body: JSON.stringify({ 'token': this.props.store.AuthStore.userToken, name, phone2, periodDay, age, sex }),
+          body: JSON.stringify({ token: this.props.store.AuthStore.userToken, name, phone2, age, sex, periodDay }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -57,16 +58,17 @@ export default class ProfileInput extends React.Component {
         })
         .then((response) => response.json().then(data => ({status: response.status, ...data})))
         .then((responseJson) => {
+          console.log(responseJson)
             this.setState({loading: false})
             if (responseJson.success) {
-              this.props.advanceToQuestions();
+              this.props.advanceToQuestions(responseJson.data);
             } else {
-              this.setState({loadingPhone: false})
               this.refs.toast.show(responseJson.error, 2000);
             }
         })
         .catch((error) => {
-          this.setState({loadingPhone: false})
+          console.log(error)
+          this.setState({loading: false})
           this.refs.toast.show("خطا در برقراری ارتباط با اینترنت", 2000);
         });
       } else {
