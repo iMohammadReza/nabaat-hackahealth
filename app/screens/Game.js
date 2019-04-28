@@ -182,10 +182,20 @@ export default class Game extends React.Component {
         flexDirection: 'column',
         justifyContent: 'flex-end',
       }}>
-        <View style={{position: 'absolute', top: 0, width:wp('90%'), height:wp('90%'), alignSelf:'center', margin: 20, borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
+        <View style={{flex: 1, width:wp('90%'), height:wp('90%'), alignSelf:'center', margin: 20, borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
 
           <Image source={ gameObjects.desk.src } style={styles.image} />
-          <Image source={ framePFf } style={styles.image} />
+          <Image 
+            source={ framePFf } 
+            style={{
+              flex: 1, 
+              position: 'absolute', 
+              top: hp('0%'), 
+              right: wp('0%'), 
+              width: wp('100%'), 
+              height: wp('100%'), 
+              resizeMode: 'contain'}}
+            />
 
           {this.state.khaze &&
           <Image source={ gameObjects.khaze.src } style={styles.image} />}
@@ -268,10 +278,10 @@ export default class Game extends React.Component {
 const styles = StyleSheet.create({
   itemView: {
     backgroundColor: '#b3f8f5',
-    paddingTop: 10,
-    paddingBottom: 10,
-    marginTop: 20,
-    marginBottom: 20,
+    paddingTop: 5,
+    paddingBottom: 5,
+    marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -279,7 +289,7 @@ const styles = StyleSheet.create({
   pointText: {
     color: '#54819e', 
     fontFamily: "IRANSansMobile_Bold", 
-    fontSize: 20 
+    fontSize: 14
   },
   image: {
     flex: 1, 
@@ -292,8 +302,8 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     flex: 1,
-    width: wp('10%'),
-    height: wp('10%'),
+    width: wp('50%'),
+    height: hp('50%'),
     resizeMode: 'contain'
   }
 })
