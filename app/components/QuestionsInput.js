@@ -73,21 +73,19 @@ export default class QuestionsInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-            <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+            <View padder style={{flex:1, margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
               {this.state.loading?
                 <Spinner color='#f47983'/>
               :
-                <View style={{flex: 1, marginTop: wp('10%'), alignContent:"center", justifyContent: 'center'}} >
+                <View style={{flex: 1, alignItems:'center', margin: wp('10%'), flexDirection: 'column'}} >
                   <Text style={{marginBottom: 10, fontFamily: "IRANSansMobile_Bold", fontSize: wp('65%') / hp('2%'), color: '#ed8687'}}>{this.state.q.title}</Text>
-                  <View>
+                  <ScrollView>
                     {this.state.q.options.map(item=>{
-                      return  <ScrollView>
-                                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendAnswer(this.state.q.id, item.qid, this.state.q.fvalue)}>
-                                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>{item.text}</Text>
-                                </Button>
-                              </ScrollView>
+                      return <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: hp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendAnswer(this.state.q.id, item.qid, this.state.q.fvalue)}>
+                                <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>{item.text}</Text>
+                              </Button>
                     })}
-                  </View>
+                  </ScrollView>
                 </View>
               }
             </View>

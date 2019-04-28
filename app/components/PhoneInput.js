@@ -67,14 +67,14 @@ export default class PhoneInput extends React.Component {
             <Image style={{margin: wp('10%'), width: wp('47%'), height: hp('25%') }} source={ phone } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.mobile} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
+                <Input onSubmitEditing={() => this.sendPhone()} value={this.state.mobile} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
               </Item>
             </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
+                <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
                   <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>ارسال کد تایید</Text>
                 </Button>
               }

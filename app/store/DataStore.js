@@ -4,10 +4,14 @@ import AuthStore from './AuthStore'
 
 class DataStorage {
 
-  @observable user
+  @observable user = {point: 50}
   @observable tips = []
   @observable actions = []
   @observable game = {}
+
+  updateGame() {
+
+  }
 
   getInit(){
     return new Promise((resolve, reject) => {

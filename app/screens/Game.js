@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, ScrollView, ImageBackground, Image, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native'
+import {View, ScrollView, ImageBackground, Image, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {inject, observer} from 'mobx-react/native';
 
@@ -45,6 +45,7 @@ export default class Game extends React.Component {
   
   onPressItem(item) {
     let { game, user } = this.props.store.DataStore;
+    let { point } = user;
     switch(item) {
       case 'fish01':
         if(!game.fish01 && user.point > gameObjects.fish01.point){
@@ -172,7 +173,7 @@ export default class Game extends React.Component {
       }}>
         <View style={{ flex: 2, margin: '7%', borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
 
-          <Image source={ gameObjects.desk.src } style={{ flex: 1, position: 'absolute', top: 190, right: 25, width: 575, height: 575, resizeMode: 'contain'}} />
+          <Image source={ gameObjects.desk.src } style={{ flex: 1, position: 'absolute', top: hp('12%'), right: wp('3%'), width: wp('75%'), height: hp('75%'), resizeMode: 'contain'}} />
           <Image source={ framePF } style={{ flex: 1, position: 'absolute', left: 450, bottom: 450, width: 125, height: 125, resizeMode: 'contain'}} />
 
           {this.state.khaze &&

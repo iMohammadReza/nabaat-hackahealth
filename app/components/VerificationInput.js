@@ -67,7 +67,7 @@ export default class VerificationInput extends React.Component {
             <Image style={{margin: wp('10%'), width: wp('40%'), height: hp('25%') }} source={ verification } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.code} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد تایید" onChangeText={(text) => this.onChangeCode(text)} />
+                <Input onSubmitEditing={() => this.sendVerification()} value={this.state.code} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد تایید" onChangeText={(text) => this.onChangeCode(text)} />
               </Item>
             </Form>
             <View style={{alignItems:"center"}} >
