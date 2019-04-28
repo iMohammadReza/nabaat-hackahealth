@@ -2,14 +2,29 @@ import React from 'react'
 import PhoneInput from '../components/PhoneInput';
 import VerificationInput from '../components/VerificationInput';
 import ProfileInput from '../components/ProfileInput';
+import QuestionsInput from '../components/QuestionsInput';
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             mobile: null,
-            stage: 1, // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
-
+            q: {
+                "id": 1,
+                "title": "آیا سرطان شما تشخیص داده شده است؟",
+                "options": [
+                    {
+                        "text": "بله",
+                        "qid": 1
+                    },
+                    {
+                        "text": "خیر!",
+                        "qid": 2
+                    }
+                ],
+                "fvalue": 0
+            },
+            stage: 3 // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
         }
     }
     
@@ -21,8 +36,8 @@ export default class Login extends React.Component {
         this.setState({ stage: 2 });
     }
 
-    advanceToQuestions() {
-        this.setState({ stage: 3 });
+    advanceToQuestions(q) {
+        this.setState({ stage: 3, q });
     }
 
     render() {
@@ -37,7 +52,11 @@ export default class Login extends React.Component {
             )
         } else if(stage == 2){
             return(
-                <ProfileInput advanceToQuestions={()=>this.advanceToQuestions()} />
+                <ProfileInput advanceToQuestions={(q)=>this.advanceToQuestions(q)} />
+            )
+        } else if(stage == 3){
+            return(
+                <QuestionsInput q={this.state.q} />
             )
         }
     }

@@ -27,8 +27,8 @@ export default class VerificationInput extends React.Component {
       if(this.state.code.length>3){
         this.setState({loading: true})
         console.log({ token: this.state.code, phone: this.props.mobile })
-        let phoneReq = this.props.store.AuthStore.webService + 'verify'; // set the code validation
-        fetch(phoneReq, {
+        let verifyReq = this.props.store.AuthStore.webService + 'verify'; // set the code validation
+        fetch(verifyReq, {
           method: 'POST',
           body: JSON.stringify({ token: this.state.code, phone: this.props.mobile }),
           headers:{

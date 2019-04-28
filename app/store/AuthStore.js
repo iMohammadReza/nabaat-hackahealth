@@ -7,8 +7,9 @@ class AuthStorage {
 
   addUserToken = (token) => {
     this.userToken = token;
-    AsyncStorage.setItem("token", token)
   }
+
+  saveToken = () => AsyncStorage.setItem("token", token)
 }
 
 const AuthStore = new AuthStorage()

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Input, Item, Button, Container, Form } from 'native-base';
+import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -44,12 +44,14 @@ export default class ProfileInput extends React.Component {
     }
 
     sendProfile = async () => {
-      if(this.state.code.length>6){
+      if(this.state.name.length>2 && this.state.phone2.length>6 && this.state.periodDay.length>0 && this.state.age.length>0 && this.state.sex.length>0 ){
         this.setState({loading: true})
-        let phoneReq = this.props.store.AuthStore.webService + 'new_token'; // set the profile
-        fetch(phoneReq, {
+        let {name, phone2, periodDay, age, sex } = this.state
+        let profileReq = this.props.store.AuthStore.webService + 'profile'; // set the profile
+        console.log(sex)
+        fetch(profileReq, {
           method: 'POST',
-          body: JSON.stringify({ 'code': this.state.code }),
+          body: JSON.stringify({ token: this.props.store.AuthStore.userToken, name, phone2, age, sex, periodDay }),
           headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -57,17 +59,17 @@ export default class ProfileInput extends React.Component {
         })
         .then((response) => response.json().then(data => ({status: response.status, ...data})))
         .then((responseJson) => {
-          
+          console.log(responseJson)
             this.setState({loading: false})
-            if (responseJson.status == 404) {
-              this.refs.toast.show(responseJson.error, 2000);
+            if (responseJson.success) {
+              this.props.advanceToQuestions(responseJson.data);
             } else {
-                this.props.advanceToProfile();
+              this.refs.toast.show(responseJson.error, 2000);
             }
         })
         .catch((error) => {
-          
-          this.setState({loadingPhone: false})
+          console.log(error)
+          this.setState({loading: false})
           this.refs.toast.show("خطا در برقراری ارتباط با اینترنت", 2000);
         });
       } else {
