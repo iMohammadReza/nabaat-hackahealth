@@ -3,29 +3,11 @@ import { ToastAndroid } from 'react-native'
 import AuthStore from './AuthStore'
 
 class DataStorage {
-  @observable carouselImages =  []
-  @observable tickets =
-    [
 
-    ]
-  @observable notifications =
-    [
-    ]
-  @observable bills =
-    [
-    ]
   @observable user
-  @observable copon
-  @observable servicesInfo
-  @observable service
-  @observable tax = 9
-  @observable discount = true
-  @observable update
-
-  @observable about = [
-  ]
-
-  @observable contact
+  @observable tips = []
+  @observable actions = []
+ 
 
   // checkCopon(copon){
   //   return new Promise((resolve, reject) => {
@@ -179,6 +161,9 @@ class DataStorage {
       .then((responseJson) => {
         if (responseJson.success) {
           resolve(responseJson)
+          this.user = responseJson.user
+          this.tips = responseJson.tips
+          this.actions = responseJson.actions
         } else {
           reject()
         }

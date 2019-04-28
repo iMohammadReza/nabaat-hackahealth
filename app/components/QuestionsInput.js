@@ -58,6 +58,7 @@ export default class QuestionInput extends React.Component {
 
     goToHome = () => {
       this.props.store.AuthStore.saveToken()
+      this.props.navigation.navigate('App')
     }
 
     render() {

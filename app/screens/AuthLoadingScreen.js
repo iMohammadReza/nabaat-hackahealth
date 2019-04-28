@@ -26,7 +26,7 @@ export default class AuthLoadingScreen extends React.Component {
       try {
         const userToken = await AsyncStorage.getItem("token")
         this.props.store.AuthStore.userToken = userToken;
-        if(!userToken) {
+        if(userToken) {
           this.props.store.DataStore.getInit().then(()=>{
             this.props.navigation.navigate('App')
           }).catch((e)=> {
