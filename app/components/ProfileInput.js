@@ -77,32 +77,40 @@ export default class ProfileInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#ffffff' }}>
+        <Container style={{ flex:1, backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{ justifyContent: 'center', alignItems:"center" }}>
-            <Image style={{margin: wp('10%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
+            <Image style={{margin: wp('5%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
-                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
-                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
-                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
+                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+              </Item>
+              <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
+              </Item>
                 {this.state.sex == 1 ?
-                  <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: 14}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                  <Item floatingLabel style={{ width: wp('50%') }}>
+                    <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                  </Item>
                   :
                   null
                 }
-              </Item>
             </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
               :
                 <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
-                  <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('3%'), color: '#ffffff'}}>ارسال</Text>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('60%') / hp('2%'), color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -115,7 +123,7 @@ export default class ProfileInput extends React.Component {
             fadeInDuration={750}
             fadeOutDuration={1000}
             opacity={0.8}
-            textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('3%')}}
+            textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('60%') / hp('2%')}}
           />
         </Container>
       );

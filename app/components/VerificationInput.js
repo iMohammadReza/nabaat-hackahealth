@@ -67,7 +67,7 @@ export default class VerificationInput extends React.Component {
             <Image style={{margin: wp('10%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.code} style={{ fontFamily: "IRANSansMobile", fontSize: wp('3%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
+                <Input value={this.state.code} style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
               </Item>
             </Form>
             <View style={{alignItems:"center"}} >
@@ -75,7 +75,7 @@ export default class VerificationInput extends React.Component {
                 <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
               :
                 <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
-                  <Text style={{ fontFamily: "IRANSansMobile", fontSize:  wp('3%'), color: '#ffffff'}}>ارسال</Text>
+                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#ffffff'}}>ارسال</Text>
                 </Button>
               }
             </View>
