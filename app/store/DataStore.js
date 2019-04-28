@@ -4,11 +4,13 @@ import AuthStore from './AuthStore'
 
 class DataStorage {
 
-  @observable user
+  @observable user = {point: 50}
   @observable tips = []
   @observable actions = []
   @observable game = {}
- 
+  updateGame() {
+
+  }
 
   // checkCopon(copon){
   //   return new Promise((resolve, reject) => {

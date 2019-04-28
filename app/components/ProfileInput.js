@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Text, View, Dimensions, StyleSheet, ScrollView, Image, StatusBar, AppRegistry } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
+import { Input, Item, Button, Container, Form, Spinner, Picker } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
@@ -86,27 +86,49 @@ export default class ProfileInput extends React.Component {
             translucent={false} />
           <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
             <Image style={{marginTop: wp('5%'), width: wp('40%'), height: hp('25%') }} source={ profile } />
-            <Form>
-              <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
-              </Item>
-              <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
-              </Item>
-              <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
-              </Item>
-              <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
-              </Item>
-                {this.state.sex == 1 ?
-                  <Item floatingLabel style={{ width: wp('50%') }}>
-                    <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
-                  </Item>
-                  :
-                  null
-                }
-                </Form>
+            <ScrollView>
+              <Form>
+                <Item floatingLabel style={{ width: wp('50%') }}>
+                <Input
+                  value={this.state.name} 
+                  placeholderTextColor='#ed8687' 
+                  style={styles.input} 
+                  placeholder="نام و نام خانوادگی" 
+                  onChangeText={(text) => this.onChangeName(text)} />
+                </Item>
+                <Item floatingLabel style={{ width: wp('50%') }}>
+                  <Input
+                    value={this.state.phone2} 
+                    placeholderTextColor='#ed8687' 
+                    style={styles.input} 
+                    placeholder="شماره فرد نزدیک" 
+                    onChangeText={(text) => this.onChangePhone2(text)} />
+                </Item>
+                <Item floatingLabel style={{ width: wp('50%') }}>
+                  <Input value={this.state.age} placeholderTextColor='#ed8687' style={styles.input} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+                </Item>
+                <Item style={{ width: wp('50%') }}>
+                  <Picker
+                    selectedValue={this.state.sex}
+                    style={{ height: 50, width: 285, color: '#ed8687', marginTop: 10 }}
+                    itemStyle={styles.input}
+                    placeholderStyle={{ color: "#ed8687" }}
+                    placeholderIconColor="#ed8687"
+                    onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}>
+                    <Picker.Item label="آقا" value="2" />
+                    <Picker.Item label="خانم" value="1" />
+                    <Picker.Item label="تمایلی ندارم" value="-1" />
+                  </Picker>
+                </Item>
+                  {this.state.sex == 1 ?
+                    <Item floatingLabel style={{ width: wp('50%') }}>
+                      <Input value={this.state.periodDay} placeholderTextColor='#ed8687' style={styles.input} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                    </Item>
+                    :
+                    null
+                  }
+              </Form>
+            </ScrollView>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
                 <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
@@ -131,3 +153,11 @@ export default class ProfileInput extends React.Component {
       );
     }
 }
+
+const styles = StyleSheet.create({
+  input: {
+    fontFamily: "IRANSansMobile", 
+    fontSize: wp('60%') / hp('2.5%'),
+    color: '#ed8687'
+  },
+})
