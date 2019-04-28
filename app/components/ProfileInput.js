@@ -79,29 +79,29 @@ export default class ProfileInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ flex:1, backgroundColor: '#ffffff' }}>
+        <Container style={{ backgroundColor: '#ffffff' }}>
           <StatusBar
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
-            <Image style={{margin: wp('10%'), width: wp('40%'), height: hp('25%') }} source={ profile } />
+            <Image style={{marginTop: wp('5%'), width: wp('40%'), height: hp('25%') }} source={ profile } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
+                <Input value={this.state.phone2} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%')}} placeholder="شماره فرد نزدیک" onChangeText={(text) => this.onChangePhone2(text)} />
               </Item>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
+                <Input value={this.state.name} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="نام و نام خانوادگی" onChangeText={(text) => this.onChangeName(text)} />
               </Item>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+                <Input value={this.state.age} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
               </Item>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
+                <Input value={this.state.sex} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="جنسیت" onChangeText={(text) => this.onChangeSex(text)} />
               </Item>
                 {this.state.sex == 1 ?
                   <Item floatingLabel style={{ width: wp('50%') }}>
-                    <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('4%')}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                    <Input value={this.state.periodDay} style={{fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('2%')}} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
                   </Item>
                   :
                   null
@@ -111,8 +111,8 @@ export default class ProfileInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
-                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>ارسال کد تایید</Text>
+                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
+                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>ارسال</Text>
                 </Button>
               }
             </View>
