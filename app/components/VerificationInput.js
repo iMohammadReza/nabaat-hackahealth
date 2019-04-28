@@ -74,7 +74,7 @@ export default class VerificationInput extends React.Component {
               {this.state.loading?
                 <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
+                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
                   <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>ارسال</Text>
                 </Button>
               }
