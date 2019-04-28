@@ -211,49 +211,49 @@ export default class Game extends React.Component {
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('fish01')}>
               <View style={styles.itemView}>
-                <Image source={ fish01 } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ fish01 } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.fish01.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('khaze')}>
               <View style={styles.itemView}>
-                <Image source={ khaze } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ khaze } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.khaze.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('books')}>
               <View style={styles.itemView}>
-                <Image source={ books } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ books } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.books.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('chair')}>
               <View style={styles.itemView}>
-                <Image source={ chair } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
-                <Text style={styles.pointText}> {gameObjects.chair.point} </Text>
+                <Image source={ chair } style={ styles.thumbnail } />
+                <Text style={styles.pointText}> { gameObjects.chair.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('komod')}>
               <View style={styles.itemView}>
-                <Image source={ komod } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ komod } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.komod.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('lamp')}>
               <View style={styles.itemView}>
-                <Image source={ lamp } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ lamp } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.lamp.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('pot')}>
               <View style={styles.itemView}>
-                <Image source={ pot } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ pot } style={ styles.thumbnail } />
                 <Text style={styles.pointText}> {gameObjects.pot.point} </Text>
               </View>
             </TouchableWithoutFeedback>
@@ -288,6 +288,12 @@ const styles = StyleSheet.create({
     left: wp('5%'), 
     width: wp('90%'), 
     height: wp('90%'), 
+    resizeMode: 'contain'
+  },
+  thumbnail: {
+    flex: 1,
+    width: wp('10%'),
+    height: wp('10%'),
     resizeMode: 'contain'
   }
 })
