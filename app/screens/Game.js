@@ -14,16 +14,27 @@ import lamp from '../assets/game/lamp.png';
 import pot from '../assets/game/pot.png';
 import framePF from '../assets/game/framePF.png';
 
+import deskf from '../assets/game/desk_full.png';
+import tankf from '../assets/game/tank_full.png';
+import fish01f from '../assets/game/fish01_full.png';
+import khazef from '../assets/game/khaze_full.png';
+import booksf from '../assets/game/books_full.png';
+import chairf from '../assets/game/chair_full.png';
+import komodf from '../assets/game/komod_full.png';
+import lampf from '../assets/game/lamp_full.png';
+import potf from '../assets/game/pot_full.png';
+import framePFf from '../assets/game/framePF_full.png';
+
 const gameObjects = {
-  desk: {src: desk, point: 10},
-  tank: {src: tank, point: 20},
-  fish01: {src: fish01, point: 15},
-  khaze: {src: khaze, point: 20},
-  books: {src: books, point: 20},
-  chair: {src: chair, point: 20},
-  komod: {src: komod, point: 20},
-  lamp: {src: lamp, point: 20},
-  pot: {src: pot, point: 20},
+  desk: {src: deskf, point: 10},
+  tank: {src: tankf, point: 20},
+  fish01: {src: fish01f, point: 15},
+  khaze: {src: khazef, point: 20},
+  books: {src: booksf, point: 20},
+  chair: {src: chairf, point: 20},
+  komod: {src: komodf, point: 20},
+  lamp: {src: lampf, point: 20},
+  pot: {src: potf, point: 20},
 }
 
 @inject('store') @observer
@@ -173,27 +184,26 @@ export default class Game extends React.Component {
       }}>
         <View style={{position: 'absolute', top: 0, width:wp('90%'), height:wp('90%'), alignSelf:'center', margin: 20, borderWidth: 4, borderColor: '#54819e', backgroundColor: '#b3f8f5' }}>
 
-          <Image source={ gameObjects.desk.src } style={{ flex: 1, position: 'absolute', top: hp('20%'), right: wp('3%'), width: wp('75%'), height: wp('75%'), resizeMode: 'contain'}} />
-          <Image source={ framePF } style={{ flex: 1, position: 'absolute', left: wp('60%'), bottom: hp('45%'), width: wp('13%'), height: hp('13%'), resizeMode: 'contain'}} />
+          <Image source={ gameObjects.desk.src } style={styles.image} />
+          <Image source={ framePFf } style={styles.image} />
 
           {this.state.khaze &&
-          <Image source={ gameObjects.khaze.src } style={{ flex: 1, position: 'absolute', left: 230, bottom: 305, width: 75, height: 75, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.khaze.src } style={styles.image} />}
           {this.state.fish01 &&
-          <Image source={ gameObjects.fish01.src } style={{ flex: 1, position: 'absolute', left: 210, bottom: 318, width: 70, height: 70, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.fish01.src } style={styles.image} />}
 
-          <Image source={ gameObjects.tank.src } style={{ flex: 1, position: 'absolute', left: wp('26%'), top: wp('33%'), width: wp('14%'), height: wp('14%'), resizeMode: 'contain'}} />
+          <Image source={ gameObjects.tank.src } style={styles.image} />
           
           {this.state.books &&
-          <Image source={ gameObjects.books.src } style={{ flex: 1, position: 'absolute', left: 300, bottom: 20, width: 110, height: 110, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.books.src } style={styles.image} />}
           {this.state.chair &&
-          <Image source={ gameObjects.chair.src } style={{ flex: 1, position: 'absolute', right: 350, bottom: 25, width: 330, height: 330, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.chair.src } style={styles.image} />}
           {this.state.komod &&
-          <Image source={ gameObjects.komod.src } style={{ flex: 1, position: 'absolute', left: 445, bottom: 40, width: 180, height: 180, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.komod.src } style={styles.image} />}
           {this.state.lamp &&
-          <Image source={ gameObjects.lamp.src } style={{ flex: 1, position: 'absolute', left: 300, bottom: 280, width: 160, height: 160, resizeMode: 'contain'}} />}
+          <Image source={ gameObjects.lamp.src } style={styles.image} />}
           {this.state.pot &&
-          <Image source={ gameObjects.pot.src } style={{ flex: 1, position: 'absolute', left: 110, bottom: 280, width: 90, height: 90, resizeMode: 'contain'}} />}
-
+          <Image source={ gameObjects.pot.src } style={styles.image} />}
         </View>
 
         <View style={{width: wp('100%'), height: hp('20%'), backgroundColor: '#54819e'}}>
@@ -201,49 +211,49 @@ export default class Game extends React.Component {
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('fish01')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.fish01.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ fish01 } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.fish01.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('khaze')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.khaze.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ khaze } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.khaze.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('books')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.books.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ books } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.books.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('chair')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.chair.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ chair } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.chair.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('komod')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.komod.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ komod } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.komod.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('lamp')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.lamp.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ lamp } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.lamp.point} </Text>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => this.onPressItem('pot')}>
               <View style={styles.itemView}>
-                <Image source={ gameObjects.pot.src } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
+                <Image source={ pot } style={{ flex: 1, width: 240, height: 240, resizeMode: 'contain'}} />
                 <Text style={styles.pointText}> {gameObjects.pot.point} </Text>
               </View>
             </TouchableWithoutFeedback>
@@ -270,5 +280,14 @@ const styles = StyleSheet.create({
     color: '#54819e', 
     fontFamily: "IRANSansMobile_Bold", 
     fontSize: 20 
+  },
+  image: {
+    flex: 1, 
+    position: 'absolute', 
+    top: hp('15%'), 
+    left: wp('5%'), 
+    width: wp('90%'), 
+    height: wp('90%'), 
+    resizeMode: 'contain'
   }
 })
