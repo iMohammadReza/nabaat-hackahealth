@@ -49,38 +49,115 @@ export default class Game extends React.Component {
       case 'fish01':
         if(!game.fish01 && user.point > gameObjects.fish01.point){
           this.setState({ fish01: true, point: point - gameObjects.fish01.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         }
         break;
       case 'khaze':
         if(!game.khaze && user.point > gameObjects.khaze.point)
           this.setState({ khaze: true, point: point - gameObjects.khaze.point});
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
       case 'books':
         if(!game.books && user.point > gameObjects.books.point)
           this.setState({ books: true, point: point - gameObjects.books.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
       case 'chair':
         if(!game.chair && user.point > gameObjects.chair.point)
           this.setState({ chair: true, point: point - gameObjects.chair.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
       case 'komod':
         if(!game.komod && user.point > gameObjects.komod.point)
           this.setState({ komod: true, point: point - gameObjects.komod.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
       case 'lamp':
         if(!game.lamp && user.point > gameObjects.lamp.point)
           this.setState({ lamp: true, point: point - gameObjects.lamp.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
       case 'pot':
         if(!game.pot && user.point > gameObjects.pot.point)
           this.setState({ pot: true, point: point - gameObjects.pot.point });
-          //updateGame();
+          this.props.store.DataStore.updateGame({
+            value: {
+              fish01: this.state.fish01,
+              khaze: this.state.khaze,
+              books: this.state.books,
+              chair: this.state.chair,
+              komod: this.state.komod,
+              lamp: this.state.lamp,
+              pot: this.state.pot,
+            },
+            point: this.state.point
+          });
         break;
     }
   }
