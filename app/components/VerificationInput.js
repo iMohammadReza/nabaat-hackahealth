@@ -5,7 +5,7 @@ import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
 
-import cancerImg from '../assets/cancer.png';
+import verification from '../assets/verification.png';
 
 const win = Dimensions.get('window');
 
@@ -63,19 +63,19 @@ export default class VerificationInput extends React.Component {
             backgroundColor="white"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{ justifyContent: 'center', alignItems:"center" }}>
-            <Image style={{margin: wp('10%'), width: wp('20%'), height: hp('25%') }} source={ cancerImg } />
+          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+            <Image style={{margin: wp('10%'), width: wp('40%'), height: hp('25%') }} source={ verification } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input value={this.state.code} style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد فعال سازی" onChangeText={(text) => this.onChangeCode(text)} />
+                <Input value={this.state.code} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد تایید" onChangeText={(text) => this.onChangeCode(text)} />
               </Item>
             </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#f47983' style={{marginTop: wp('20%')}}/>
+                <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
               :
-                <Button style={{ backgroundColor: '#f47983', justifyContent: 'center', marginTop: wp('20%'), width: wp('30%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
-                  <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#ffffff'}}>ارسال</Text>
+                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 4, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
+                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>ارسال</Text>
                 </Button>
               }
             </View>

@@ -8,7 +8,7 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             mobile: null,
-            stage: 0, // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
+            stage: 1, // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
 
         }
     }
