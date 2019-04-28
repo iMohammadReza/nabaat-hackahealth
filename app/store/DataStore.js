@@ -7,6 +7,7 @@ class DataStorage {
   @observable user
   @observable tips = []
   @observable actions = []
+  @observable game = {}
  
 
   // checkCopon(copon){
