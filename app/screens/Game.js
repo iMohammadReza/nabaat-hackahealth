@@ -42,62 +42,60 @@ export default class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fish01: this.props.store.DataStore.game.fish01,
-      khaze: this.props.store.DataStore.game.khaze,
-      books: this.props.store.DataStore.game.books,
-      chair: this.props.store.DataStore.game.chair,
-      komod: this.props.store.DataStore.game.komod,
-      lamp: this.props.store.DataStore.game.lamp,
-      pot: this.props.store.DataStore.game.pot,
+      fish01: this.props.store.DataStore.game[0],
+      khaze: this.props.store.DataStore.game[1],
+      books: this.props.store.DataStore.game[2],
+      chair: this.props.store.DataStore.game[3],
+      komod: this.props.store.DataStore.game[4],
+      lamp: this.props.store.DataStore.game[5],
+      pot: this.props.store.DataStore.game[6],
       point: this.props.store.DataStore.user.score,
     }
     this.onPressItem = this.onPressItem.bind(this);
   }
-  
+
   updateTheGame=()=>{
-    this.props.store.DataStore.updateGame(
-      {
-        fish01: this.state.fish01,
-        khaze: this.state.khaze,
-        books: this.state.books,
-        chair: this.state.chair,
-        komod: this.state.komod,
-        lamp: this.state.lamp,
-        pot: this.state.pot,
-      },
-      this.state.point);
+    let data = "";
+    if(this.state.fish01) data += '1'; else data += '0';
+    if(this.state.khaze) data += '1'; else data += '0';
+    if(this.state.books) data += '1'; else data += '0';
+    if(this.state.chair) data += '1'; else data += '0';
+    if(this.state.komod) data += '1'; else data += '0';
+    if(this.state.lamp) data += '1'; else data += '0';
+    if(this.state.pot) data += '1'; else data += '0';
+    this.props.store.DataStore.updateGame(data,this.state.point);
   }
 
   onPressItem(item) {
     let { game, user } = this.props.store.DataStore;
     switch(item) {
       case 'fish01':
-        if(!game.fish01 && user.score > gameObjects.fish01.point)
-          this.setState({ fish01: true, point: user.score - gameObjects.fish01.point }, ()=>this.updateTheGame());
+        if(game[0] == '0' && user.score > gameObjects.fish01.point)
+          this.setState({ fish01: '1', point: user.score - gameObjects.fish01.point }, ()=>this.updateTheGame());
         break;
       case 'khaze':
-        if(!game.khaze && user.score > gameObjects.khaze.point)
-          this.setState({ khaze: true, point: user.score - gameObjects.khaze.point }, ()=>this.updateTheGame());
+        if(game[1] == '0' && user.score > gameObjects.khaze.point)
+          this.setState({ khaze: '1', point: user.score - gameObjects.khaze.point }, ()=>this.updateTheGame());
         break;
       case 'books':
-        if(!game.books && user.score > gameObjects.books.point)
-          this.setState({ books: true, point: user.score - gameObjects.books.point }, ()=>this.updateTheGame());
+        if(game[2] == '0' && user.score > gameObjects.books.point)
+          this.setState({ books: '1', point: user.score - gameObjects.books.point }, ()=>this.updateTheGame());
         break;
       case 'chair':
-        if(!game.chair && user.score > gameObjects.chair.point)
-          this.setState({ chair: true, point: user.score - gameObjects.chair.point }, ()=>this.updateTheGame());
+        if(game[3] == '0' && user.score > gameObjects.chair.point)
+          this.setState({ chair: '1', point: user.score - gameObjects.chair.point }, ()=>this.updateTheGame());
         break;
       case 'komod':
-        if(!game.komod && user.score > gameObjects.komod.point)
-          this.setState({ komod: true, point: user.score - gameObjects.komod.point }, ()=>this.updateTheGame());
+        if(game[4] == '0' && user.score > gameObjects.komod.point)
+          this.setState({ komod: '1', point: user.score - gameObjects.komod.point }, ()=>this.updateTheGame());
         break;
       case 'lamp':
-        if(!game.lamp && user.score > gameObjects.lamp.point)
-          this.setState({ lamp: true, point: user.score - gameObjects.lamp.point }, ()=>this.updateTheGame());
+        if(game[5] == '0' && user.score > gameObjects.lamp.point)
+          this.setState({ lamp: '1', point: user.score - gameObjects.lamp.point }, ()=>this.updateTheGame());
         break;
       case 'pot':
-        if(!game.pot && user.score > gameObjects.pot.point)
-          this.setState({ pot: true, point: user.score - gameObjects.pot.point }, ()=>this.updateTheGame());
+        if(game[6] == '0' && user.score > gameObjects.pot.point)
+          this.setState({ pot: '1', point: user.score - gameObjects.pot.point }, ()=>this.updateTheGame());
         break;
     }
   }

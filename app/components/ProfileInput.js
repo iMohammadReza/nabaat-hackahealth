@@ -85,10 +85,10 @@ export default class ProfileInput extends React.Component {
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
-            <Image style={{marginTop: wp('5%'), width: wp('40%'), height: hp('25%') }} source={ profile } />
+            <Image style={styles.image} source={ profile } />
             <ScrollView>
               <Form>
-                <Item floatingLabel style={{ width: wp('50%') }}>
+                <Item style={{ width: wp('50%') }}>
                 <Input
                   value={this.state.name} 
                   placeholderTextColor='#ed8687' 
@@ -96,7 +96,7 @@ export default class ProfileInput extends React.Component {
                   placeholder="نام و نام خانوادگی" 
                   onChangeText={(text) => this.onChangeName(text)} />
                 </Item>
-                <Item floatingLabel style={{ width: wp('50%') }}>
+                <Item style={{ width: wp('50%') }}>
                   <Input
                     value={this.state.phone2} 
                     placeholderTextColor='#ed8687' 
@@ -104,13 +104,13 @@ export default class ProfileInput extends React.Component {
                     placeholder="شماره فرد نزدیک" 
                     onChangeText={(text) => this.onChangePhone2(text)} />
                 </Item>
-                <Item floatingLabel style={{ width: wp('50%') }}>
+                <Item style={{ width: wp('50%') }}>
                   <Input value={this.state.age} placeholderTextColor='#ed8687' style={styles.input} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
                 </Item>
                 <Item style={{ width: wp('50%') }}>
                   <Picker
                     selectedValue={this.state.sex}
-                    style={{ height: 50, width: 285, color: '#ed8687', marginTop: 10 }}
+                    style={{ height: 40, color: '#ed8687', marginTop: 10 }}
                     itemStyle={styles.input}
                     placeholderStyle={{ color: "#ed8687" }}
                     placeholderIconColor="#ed8687"
@@ -121,7 +121,7 @@ export default class ProfileInput extends React.Component {
                   </Picker>
                 </Item>
                   {this.state.sex == 1 ?
-                    <Item floatingLabel style={{ width: wp('50%') }}>
+                    <Item style={{ width: wp('50%') }}>
                       <Input value={this.state.periodDay} placeholderTextColor='#ed8687' style={styles.input} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
                     </Item>
                     :
@@ -157,7 +157,13 @@ export default class ProfileInput extends React.Component {
 const styles = StyleSheet.create({
   input: {
     fontFamily: "IRANSansMobile", 
-    fontSize: wp('60%') / hp('2.5%'),
+    fontSize: wp('60%') / hp('3%'),
     color: '#ed8687'
+  },
+  image: {
+    
+    width: wp('50%'), 
+    height: wp('50%'), 
+    resizeMode: 'contain'
   },
 })
