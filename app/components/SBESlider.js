@@ -58,11 +58,11 @@ export default class SBESlider extends Component {
         {index == 4 &&
           <CardItem style={{borderRadius: 10, justifyContent: 'center'}}>
             <View style={{alignItems: 'center', alignContent: 'center'}}>
-              <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', width: wp('50%'), height: hp('7%'), marginBottom:10 }} onPress={() => phonecall(this.props.store.DataStore.drphone, false)}>
-                <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>تماس با پزشک</Text>
+              <Button style={{backgroundColor: '#d8e4ec', justifyContent: 'center', width: wp('50%'), height: hp('7%'), marginBottom:10 }} onPress={() => phonecall(this.props.store.DataStore.drphone, false)}>
+                <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#da62b7'}}>تماس با پزشک</Text>
               </Button>
-              <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', width: wp('50%'), height: hp('7%') }} onPress={() => {first?this.props.advanceToQuestions():this.props.navigation.goBack()}}>
-                <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>مطالعه کردم.</Text>
+              <Button style={{backgroundColor: '#d8e4ec', justifyContent: 'center', width: wp('50%'), height: hp('7%') }} onPress={() => {first?this.props.advanceToQuestions():this.props.navigation.goBack()}}>
+                <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#da62b7'}}>مطالعه کردم.</Text>
               </Button>
             </View>
           </CardItem>}
@@ -73,7 +73,7 @@ export default class SBESlider extends Component {
   render () {
 
       return (
-        <Container>
+        <Container style={{flex:1, alignItems : 'center'}}>
                 <LinearGradient
         colors={['#77b4db', '#da62b7']}
         style={{flex: 1}}
@@ -86,7 +86,7 @@ export default class SBESlider extends Component {
             ref={(c) => { this._carousel = c; }}
             data={steps}
             renderItem={this._renderItem.bind(this)}
-            sliderWidth={400}
+            sliderWidth={wp('100%')}
             itemWidth={ wp('75%')}
           />
           </LinearGradient>

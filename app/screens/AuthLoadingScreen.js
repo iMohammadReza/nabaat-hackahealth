@@ -1,10 +1,11 @@
 import React from 'react';
-import { AsyncStorage, View, ToastAndroid, StatusBar } from 'react-native';
+import { AsyncStorage, View, Image, StatusBar } from 'react-native';
 import {Spinner, Text} from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import LottieView from 'lottie-react-native';
-
-import splash from '../assets/splash.json'
+import LinearGradient from 'react-native-linear-gradient';
+import splash from '../assets/girl.json'
+import name from '../assets/name.png'
 
 @inject('store') @observer
 export default class AuthLoadingScreen extends React.Component {
@@ -17,10 +18,10 @@ export default class AuthLoadingScreen extends React.Component {
     break;
   
     componentDidMount = () => {
-     this._bootstrapAsync()
-      // setTimeout(() => {
-      //     this._bootstrapAsync()
-      // }, 4000)
+    //  this._bootstrapAsync()
+      setTimeout(() => {
+          this._bootstrapAsync()
+      }, 1000)
     }
     _bootstrapAsync = async () => {
       try {
@@ -49,29 +50,22 @@ export default class AuthLoadingScreen extends React.Component {
   
     render() {
       return (
-        <View style={{flex:1, justifyContent:"center", backgroundColor:"white"}}>
+        <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+        >
           <StatusBar
-            backgroundColor="white"
+            backgroundColor="#77b4db"
             barStyle="dark-content"
             translucent={false} />
-          <View style={{flex:5, justifyContent:"center", flexDirection:"row"}} >
-            <View style={{justifyContent:"center", flexDirection:"column"}} >
-              <LottieView
-                  source={splash}
-                  autoPlay
-                  style={{ width: 500, height:500}}
-              />
-              <Text style={{fontFamily:"IRANSansMobile_Bold", color:"#22b4c5", fontSize:28, margin:16, textAlign:"center"}} > من</Text>
-            </View>
-          </View>
-          <View style={{flex:2, justifyContent:"center", flexDirection:"row"}} >
-            <View style={{justifyContent:"center", flexDirection:"column"}} >
-              {this.state.loading&&
-                <Spinner color="#22b4c5" style={{height:64, width:64}} />
-              }
-            </View>
-          </View>
-        </View>
+          <Image style={{alignSelf: 'center', marginTop: 50}} source={name} />
+          <LottieView
+            style={{marginTop: 50}}
+            source={splash}
+            autoPlay
+            loop
+          />
+        </LinearGradient>
       );
     }
 }

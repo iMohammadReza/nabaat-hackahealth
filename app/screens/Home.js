@@ -63,7 +63,7 @@ export default class Home extends React.Component {
               barStyle="dark-content"
               translucent={false} />
             <View style={{flexDirection:"row", margin: wp('6%')}} >
-              <Text style={{borderColor:"#ed8687", borderRadius:50, borderWidth: wp('2%'), padding:  wp('4%'), height:  wp('16%'), width:  wp('16%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >{user.score}</Text>
+              <Text style={{borderColor:"#da62b7", color: '#d8e4ec', borderRadius:50, borderWidth: wp('2%'), padding:  wp('4%'), height:  wp('16%'), width:  wp('16%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >{user.score}</Text>
               <Text style={{alignSelf:"center", flex:1, textAlign:"left", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%')}} >سلام {user.name}</Text>
             </View>
             <View style={{flex:1, padding: wp('6%'), paddingTop:0}}>
@@ -76,16 +76,16 @@ export default class Home extends React.Component {
                       </Card>
                   }
                   renderItem={({item}) => 
-                      <View style={{flex: 1, margin:16, borderRadius: 5, borderColor:"#ed8687", borderWidth:2}}>
+                      <View style={{flex: 1, margin:16, borderRadius: 5, borderColor:"#d8e4ec", borderWidth:2}}>
                           <View style={{flex:1, flexDirection:"row", margin:12, justifyContent:"space-between"}}>
                             {item.text?
                               <View style={{flexDirection:"column", flex:1}} >
                                 <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.text.trim()}</Text>
                                 <View style={{flexDirection:"row"}} >
-                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('action', "ok", item._id, item.point)} >
+                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#d8e4ec"}} onPress={()=>this.commit('action', "ok", item._id, item.point)} >
                                     <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  16, color:"white"}} >نه</Text>
                                   </Button>
-                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('action', "nok", item._id, item.point)} >
+                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#d8e4ec"}} onPress={()=>this.commit('action', "nok", item._id, item.point)} >
                                     <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize: 16, color:"white"}} >بله</Text>
                                   </Button>
                                 </View>
@@ -95,7 +95,7 @@ export default class Home extends React.Component {
                               <View style={{flexDirection:"column", flex:1}} >
                                 <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.context.trim()}</Text>
 
-                                <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('tip', "ok", item._id, item.point)} >
+                                <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#d8e4ec"}} onPress={()=>this.commit('tip', "ok", item._id, item.point)} >
                                   <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >خواندم</Text>
                                 </Button>
                                 <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.point} امتیاز</Text>
@@ -108,11 +108,11 @@ export default class Home extends React.Component {
                 />
               </Card>
             </View>
-            <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"#ed8687"}} onPress={this.goGame} >
+            <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"#d8e4ec"}} onPress={this.goGame} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >آکواریوم</Text>
             </Button>
             <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"white"}} onPress={this.gobse} >
-              <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile", fontSize:  wp('6%'), color:"#ed8687"}} >راهنمای خود تستی</Text>
+              <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile", fontSize:  wp('6%'), color:"#d8e4ec"}} >راهنمای خود تستی</Text>
             </Button>
             </LinearGradient>
           </Container>
