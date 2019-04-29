@@ -4,6 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { Input, Form, Item, Button, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
+import LinearGradient from 'react-native-linear-gradient';
 
 import cancerImg from '../assets/cancer.png';
 

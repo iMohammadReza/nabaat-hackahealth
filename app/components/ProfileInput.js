@@ -62,7 +62,7 @@ export default class ProfileInput extends React.Component {
           console.log(responseJson)
             this.setState({loading: false})
             if (responseJson.success) {
-              this.props.advanceToQuestions(responseJson.data);
+              this.props.advanceToBSE(responseJson.data);
             } else {
               this.refs.toast.show(responseJson.error, 2000);
             }

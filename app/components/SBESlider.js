@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, StatusBar, StyleSheet } from 'react-native';
 import { Card, CardItem, Body, Container, Button } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
+import {inject, observer} from "mobx-react/native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {phonecall} from 'react-native-communications'
 
@@ -29,6 +30,8 @@ const steps = [
       text: "در آخر، هر نوک سینه رو فشار بده. اگه هر ترشح یا دردی وجود داشت، حتما به دکتر مراجعه کن."
     }
   ]
+
+@inject('store') @observer
 export default class SBESlider extends Component {
   constructor(props) {
     super(props)
