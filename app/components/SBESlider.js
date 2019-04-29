@@ -33,7 +33,7 @@ export default class SBESlider extends Component {
 
   _renderItem ({item, index}) {
     return (
-      <Card style={{borderRadius: 10}}>
+      <Card style={{borderRadius: 10, marginTop: 50}}>
         <CardItem cardBody style={{borderTopRightRadius: 10, borderTopLeftRadius: 10, overflow: 'hidden'}}>
             <Image source={ item.img } style={{borderRadius: 10, height: wp('75%'), width: null, flex: 1}}/>
         </CardItem>
@@ -61,7 +61,7 @@ export default class SBESlider extends Component {
 
   render () {
       return (
-        <Container style={{paddingTop: 10}}>
+        <Container>
                 <LinearGradient
         colors={['#77b4db', '#da62b7']}
         style={{flex: 1}}
