@@ -69,20 +69,24 @@ export default class QuestionsInput extends React.Component {
     render() {
       return (
         <Container>
+                <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
           <StatusBar
-            backgroundColor="white"
+            backgroundColor="#77b4db"
             barStyle="dark-content"
             translucent={false} />
-            <View padder style={{flex:1, margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+            <View padder style={{flex:1, margin: '10%', borderWidth: 4, borderColor: '#d8e4ec'}}>
               {this.state.loading?
-                <Spinner color='#f47983'/>
+                <Spinner color='#d8e4ec'/>
               :
                 <View style={{flex: 1, alignItems:'center', margin: wp('10%'), flexDirection: 'column'}} >
-                  <Text style={{marginBottom: 10, fontFamily: "IRANSansMobile_Bold", fontSize: wp('65%') / hp('2%'), color: '#ed8687'}}>{this.state.q.title}</Text>
+                  <Text style={{marginBottom: 10, fontFamily: "IRANSansMobile_Bold", fontSize: wp('65%') / hp('2%'), color: '#d8e4ec'}}>{this.state.q.title}</Text>
                   <ScrollView>
                     {this.state.q.options.map(item=>{
-                      return <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: hp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendAnswer(this.state.q.id, item.qid, this.state.q.fvalue)}>
-                                <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>{item.text}</Text>
+                      return <Button  style={{backgroundColor: '#d8e4ec', justifyContent: 'center', marginTop: hp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendAnswer(this.state.q.id, item.qid, this.state.q.fvalue)}>
+                                <Text style={{ fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), color: '#da62b7'}}>{item.text}</Text>
                               </Button>
                     })}
                   </ScrollView>
@@ -99,6 +103,7 @@ export default class QuestionsInput extends React.Component {
             opacity={0.8}
             textStyle={{color:'white', fontFamily:"IRANSansMobile"}}
           />
+          </LinearGradient>
         </Container>
       );
     }

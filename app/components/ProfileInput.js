@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { Input, Item, Button, Container, Form, Spinner, Picker } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
-
+import LinearGradient from 'react-native-linear-gradient';
 import profile from '../assets/profile.png';
 
 const win = Dimensions.get('window');
@@ -79,19 +79,23 @@ export default class ProfileInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#ffffff' }}>
+        <Container>
+                <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
           <StatusBar
-            backgroundColor="white"
+            backgroundColor="#77b4db"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#d8e4ec'}}>
             <Image style={styles.image} source={ profile } />
             <ScrollView>
               <Form>
                 <Item style={{ width: wp('50%') }}>
                 <Input
                   value={this.state.name} 
-                  placeholderTextColor='#ed8687' 
+                  placeholderTextColor='#d8e4ec' 
                   style={styles.input} 
                   placeholder="نام و نام خانوادگی" 
                   onChangeText={(text) => this.onChangeName(text)} />
@@ -99,21 +103,21 @@ export default class ProfileInput extends React.Component {
                 <Item style={{ width: wp('50%') }}>
                   <Input
                     value={this.state.phone2} 
-                    placeholderTextColor='#ed8687' 
+                    placeholderTextColor='#d8e4ec' 
                     style={styles.input} 
                     placeholder="شماره فرد نزدیک" 
                     onChangeText={(text) => this.onChangePhone2(text)} />
                 </Item>
                 <Item style={{ width: wp('50%') }}>
-                  <Input value={this.state.age} placeholderTextColor='#ed8687' style={styles.input} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+                  <Input value={this.state.age} placeholderTextColor='#d8e4ec' style={styles.input} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
                 </Item>
                 <Item style={{ width: wp('50%') }}>
                   <Picker
                     selectedValue={this.state.sex}
-                    style={{ height: 40, color: '#ed8687', marginTop: 10 }}
+                    style={{ height: 40, color: '#d8e4ec', marginTop: 10 }}
                     itemStyle={styles.input}
-                    placeholderStyle={{ color: "#ed8687" }}
-                    placeholderIconColor="#ed8687"
+                    placeholderStyle={{ color: "#d8e4ec" }}
+                    placeholderIconColor="#d8e4ec"
                     onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}>
                     <Picker.Item label="آقا" value="2" />
                     <Picker.Item label="خانم" value="1" />
@@ -122,7 +126,7 @@ export default class ProfileInput extends React.Component {
                 </Item>
                   {this.state.sex == 1 ?
                     <Item style={{ width: wp('50%') }}>
-                      <Input value={this.state.periodDay} placeholderTextColor='#ed8687' style={styles.input} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                      <Input value={this.state.periodDay} placeholderTextColor='#d8e4ec' style={styles.input} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
                     </Item>
                     :
                     null
@@ -131,10 +135,10 @@ export default class ProfileInput extends React.Component {
             </ScrollView>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
+                <Spinner color='#d8e4ec' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
-                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2%'), color: '#ed8687'}}>ارسال</Text>
+                <Button  style={{backgroundColor: '#d8e4ec', justifyContent: 'center', marginTop: wp('5%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendProfile()}>
+                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#da62b7'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -149,6 +153,7 @@ export default class ProfileInput extends React.Component {
             opacity={0.8}
             textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('60%') / hp('2%')}}
           />
+          </LinearGradient>
         </Container>
       );
     }
@@ -158,7 +163,7 @@ const styles = StyleSheet.create({
   input: {
     fontFamily: "IRANSansMobile", 
     fontSize: wp('60%') / hp('3%'),
-    color: '#ed8687'
+    color: '#d8e4ec'
   },
   image: {
     

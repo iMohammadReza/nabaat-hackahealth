@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { Input, Item, Button, Container, Form, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
 import Toast from 'react-native-easy-toast';
-
+import LinearGradient from 'react-native-linear-gradient';
 import verification from '../assets/verification.png';
 
 const win = Dimensions.get('window');
@@ -58,24 +58,28 @@ export default class VerificationInput extends React.Component {
 
     render() {
       return (
-        <Container style={{ backgroundColor: '#ffffff' }}>
+        <Container>
+                <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
           <StatusBar
-            backgroundColor="white"
+            backgroundColor="#77b4db"
             barStyle="dark-content"
             translucent={false} />
-          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
+          <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#d8e4ec'}}>
             <Image style={styles.image} source={ verification } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
-                <Input onSubmitEditing={() => this.sendVerification()} value={this.state.code} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد تایید" onChangeText={(text) => this.onChangeCode(text)} />
+                <Input onSubmitEditing={() => this.sendVerification()} value={this.state.code} placeholderTextColor='#d8e4ec' style={{color: '#d8e4ec', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2.5%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="کد تایید" onChangeText={(text) => this.onChangeCode(text)} />
               </Item>
             </Form>
             <View style={{alignItems:"center"}} >
               {this.state.loading?
-                <Spinner color='#ed8687' style={{marginTop: wp('20%')}}/>
+                <Spinner color='#d8e4ec' style={{marginTop: wp('20%')}}/>
               :
-                <Button  style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
-                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>ارسال</Text>
+                <Button  style={{backgroundColor: '#d8e4ec', justifyContent: 'center', marginTop: wp('20%'), width: wp('50%'), height: hp('7%') }} onPress={() => this.sendVerification()}>
+                  <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#da62b7'}}>ارسال</Text>
                 </Button>
               }
             </View>
@@ -90,6 +94,7 @@ export default class VerificationInput extends React.Component {
             opacity={0.8}
             textStyle={{color:'white', fontFamily:"IRANSansMobile", fontSize: wp('3%')}}
           />
+          </LinearGradient>
         </Container>
       );
     }
