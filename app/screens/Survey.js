@@ -1,9 +1,10 @@
-import React from 'react'
-import {Text} from 'react-native'
-export default class Survey extends React.Component {
-     render() {
-        return (
-          <Text>Survey</Text>
-        );
-     }
+import React, { Component } from 'react';
+import SBESlider from '../components/SBESlider';
+
+export default class Survey extends Component {
+  render() {
+    return(
+      <SBESlider />
+    )
+  }
 }

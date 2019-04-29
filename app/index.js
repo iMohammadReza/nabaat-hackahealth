@@ -7,9 +7,9 @@ import AuthLoadingScreen from "./screens/AuthLoadingScreen"
 
 const AppStack = createStackNavigator(
   {
+      Survey: {screen: Survey},
       Game: {screen: Game},
       Home: {screen: Home},
-      Survey: {screen: Survey},
   },
   {
       headerMode: 'none'
