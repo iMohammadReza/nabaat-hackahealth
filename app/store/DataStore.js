@@ -7,7 +7,6 @@ class DataStorage {
   @observable user = {point: 50}
   @observable tips = []
   @observable actions = []
-  @observable game = {}
   @observable list = []
   @observable usedCommits = []
   @observable drphone = "09136310951"
@@ -19,6 +18,7 @@ class DataStorage {
   }
 
   updateGame(value, point) {
+    console.log(value, point)
     let req = AuthStore.webService+"game"
     fetch(req, {
       method: 'PUT',
@@ -67,6 +67,7 @@ class DataStorage {
         if (responseJson.success) {
           resolve(responseJson)
           this.user = responseJson.user
+          console.log(this.user)
           this.tips = responseJson.tips
           this.drphone = responseJson.drphone
           this.actions = responseJson.actions

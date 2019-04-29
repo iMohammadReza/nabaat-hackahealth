@@ -42,32 +42,37 @@ export default class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fish01: this.props.store.DataStore.game[0],
-      khaze: this.props.store.DataStore.game[1],
-      books: this.props.store.DataStore.game[2],
-      chair: this.props.store.DataStore.game[3],
-      komod: this.props.store.DataStore.game[4],
-      lamp: this.props.store.DataStore.game[5],
-      pot: this.props.store.DataStore.game[6],
+      fish01: this.props.store.DataStore.user.game[0],
+      khaze: this.props.store.DataStore.user.game[1],
+      books: this.props.store.DataStore.user.game[2],
+      chair: this.props.store.DataStore.user.game[3],
+      komod: this.props.store.DataStore.user.game[4],
+      lamp: this.props.store.DataStore.user.game[5],
+      pot: this.props.store.DataStore.user.game[6],
       point: this.props.store.DataStore.user.score,
     }
     this.onPressItem = this.onPressItem.bind(this);
+    console.log("state", this.state)
   }
 
   updateTheGame=()=>{
     let data = "";
-    if(this.state.fish01) data += '1'; else data += '0';
-    if(this.state.khaze) data += '1'; else data += '0';
-    if(this.state.books) data += '1'; else data += '0';
-    if(this.state.chair) data += '1'; else data += '0';
-    if(this.state.komod) data += '1'; else data += '0';
-    if(this.state.lamp) data += '1'; else data += '0';
-    if(this.state.pot) data += '1'; else data += '0';
+    if(this.state.fish01 != '0') data += '1'; else data += '0';
+    if(this.state.khaze != '0') data += '1'; else data += '0';
+    if(this.state.books != '0') data += '1'; else data += '0';
+    if(this.state.chair != '0') data += '1'; else data += '0';
+    if(this.state.komod != '0') data += '1'; else data += '0';
+    if(this.state.lamp != '0') data += '1'; else data += '0';
+    if(this.state.pot != '0') data += '1'; else data += '0';
+    console.log(data, this.state.point)
     this.props.store.DataStore.updateGame(data,this.state.point);
   }
 
   onPressItem(item) {
-    let { game, user } = this.props.store.DataStore;
+    let {user} = this.props.store.DataStore;
+    let {game} = user
+    console.log(game[0] == '0' && user.score > gameObjects.fish01.point, game[0],user.score, gameObjects.fish01.point, game[0] == '0', user.score > gameObjects.fish01.point)
+
     switch(item) {
       case 'fish01':
         if(game[0] == '0' && user.score > gameObjects.fish01.point)
@@ -123,22 +128,22 @@ export default class Game extends React.Component {
               resizeMode: 'contain'}}
             />
 
-          {this.state.khaze &&
+          {this.state.khaze != '0' &&
           <Image source={ gameObjects.khaze.src } style={styles.image} />}
-          {this.state.fish01 &&
+          {this.state.fish01 != '0' &&
           <Image source={ gameObjects.fish01.src } style={styles.image} />}
 
           <Image source={ gameObjects.tank.src } style={styles.image} />
           
-          {this.state.books &&
+          {this.state.books != '0' &&
           <Image source={ gameObjects.books.src } style={styles.image} />}
-          {this.state.chair &&
+          {this.state.chair != '0' &&
           <Image source={ gameObjects.chair.src } style={styles.image} />}
-          {this.state.komod &&
+          {this.state.komod != '0' &&
           <Image source={ gameObjects.komod.src } style={styles.image} />}
-          {this.state.lamp &&
+          {this.state.lamp != '0' &&
           <Image source={ gameObjects.lamp.src } style={styles.image} />}
-          {this.state.pot &&
+          {this.state.pot != '0' &&
           <Image source={ gameObjects.pot.src } style={styles.image} />}
         </View>
 
