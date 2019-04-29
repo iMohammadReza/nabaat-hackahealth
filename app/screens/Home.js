@@ -37,6 +37,7 @@ export default class Home extends React.Component {
             if (responseJson.success) {
               this.props.store.DataStore.user.score=this.props.store.DataStore.user.score+point
               ToastAndroid.show(point+" امتیاز گرفتی", ToastAndroid.SHORT)
+              this.props.store.DataStore.useCommit(commit_id)
             } else {
               ToastAndroid.show("خطا", ToastAndroid.SHORT)
             }
@@ -56,14 +57,14 @@ export default class Home extends React.Component {
               backgroundColor="white"
               barStyle="dark-content"
               translucent={false} />
-            <View style={{flexDirection:"row", margin: wp('4%')}} >
+            <View style={{flexDirection:"row", margin: wp('6%')}} >
               <Text style={{borderColor:"#ed8687", borderRadius:50, borderWidth: wp('2%'), padding:  wp('4%'), height:  wp('16%'), width:  wp('16%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >{user.score}</Text>
               <Text style={{alignSelf:"center", flex:1, textAlign:"left", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%')}} >سلام {user.name}</Text>
             </View>
-            <View style={{flex:1, padding: wp('8%'), paddingTop:0}}>
+            <View style={{flex:1, padding: wp('6%'), paddingTop:0}}>
               <Card style={{flex:1}} >
                 <FlatList
-                  data={[...this.props.store.DataStore.actions,...this.props.store.DataStore.tips]}
+                  data={this.props.store.DataStore.list}
                   ListEmptyComponent={
                       <Card style={{flex: 1, margin:48, borderRadius: 8 }}>
                           <Text style={{fontFamily:"IRANSansMobile", fontSize:12, margin:12, marginBottom:16}} >برای امروز کافیه</Text>
@@ -102,10 +103,10 @@ export default class Home extends React.Component {
                 />
               </Card>
             </View>
-            <Button style={{margin: wp('8%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"#ed8687"}} onPress={this.goGame} >
+            <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"#ed8687"}} onPress={this.goGame} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >آکواریوم</Text>
             </Button>
-            <Button style={{margin: wp('8%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"white"}} onPress={this.gobse} >
+            <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"white"}} onPress={this.gobse} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile", fontSize:  wp('6%'), color:"#ed8687"}} >راهنمای خود تستی</Text>
             </Button>
           </Container>

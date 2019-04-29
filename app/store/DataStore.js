@@ -8,13 +8,18 @@ class DataStorage {
   @observable tips = []
   @observable actions = []
   @observable game = {}
+  @observable list = []
+  @observable usedCommits = []
+  @observable drphone = "09136310951"
+
+  useCommit = (cmt) => {
+    this.usedCommits.push(cmt)
+    this.list = this.list.filter(itm =>!this.usedCommits.includes(itm))
+    console.log(this.list.length, this.usedCommits.length, this.list.filter((itm)=>!this.usedCommits.includes(itm)))
+  }
 
   updateGame(value, point) {
     let req = AuthStore.webService+"game"
-    console.log(point)
-    // point = toString(point)
-    value = JSON.stringify(value)
-    console.log(point, value)
     fetch(req, {
       method: 'PUT',
       headers:{
@@ -23,7 +28,7 @@ class DataStorage {
       },
       body: JSON.stringify({
         token: AuthStore.userToken,
-        value: value,
+        value: value+"",
         point: point.toString()
       })
     })
@@ -63,7 +68,9 @@ class DataStorage {
           resolve(responseJson)
           this.user = responseJson.user
           this.tips = responseJson.tips
+          this.drphone = responseJson.drphone
           this.actions = responseJson.actions
+          this.list = [...this.actions,...this.tips]
         } else {
           reject()
         }

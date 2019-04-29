@@ -3,6 +3,7 @@ import { View, Text, Image, StatusBar, StyleSheet } from 'react-native';
 import { Card, CardItem, Body, Container, Button } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {phonecall} from 'react-native-communications'
 
 import step1 from '../assets/learning/learn_step1.gif';
 import step2 from '../assets/learning/learn_step2.gif';
@@ -29,8 +30,12 @@ const steps = [
     }
   ]
 export default class SBESlider extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   _renderItem ({item, index}) {
+    let {first} = this.props;
     return (
       <Card style={{borderRadius: 10}}>
         <CardItem cardBody style={{borderTopRightRadius: 10, borderTopLeftRadius: 10, overflow: 'hidden'}}>
@@ -49,8 +54,11 @@ export default class SBESlider extends Component {
         {index == 4 &&
           <CardItem style={{borderRadius: 10, justifyContent: 'center'}}>
             <View style={{alignItems: 'center', alignContent: 'center'}}>
-              <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', width: wp('50%'), height: hp('7%') }} onPress={() => this.sendPhone()}>
+              <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', width: wp('50%'), height: hp('7%'), marginBottom:10 }} onPress={() => phonecall(this.props.store.DataStore.drphone, false)}>
                 <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>تماس با پزشک</Text>
+              </Button>
+              <Button style={{backgroundColor: '#ffffff', borderColor: '#ed8687', borderWidth: 3, justifyContent: 'center', width: wp('50%'), height: hp('7%') }} onPress={() => {first?this.props.advanceToQuestions():this.props.navigation.goBack()}}>
+                <Text style={{ fontFamily: "IRANSansMobile_Bold", fontSize: wp('60%') / hp('2.5%'), color: '#ed8687'}}>مطالعه کردم.</Text>
               </Button>
             </View>
           </CardItem>}
@@ -59,6 +67,7 @@ export default class SBESlider extends Component {
 }
 
   render () {
+
       return (
         <Container style={{backgroundColor: '#ffffff', paddingTop: wp('10%')}}>
         <StatusBar
@@ -68,7 +77,7 @@ export default class SBESlider extends Component {
           <Carousel
             ref={(c) => { this._carousel = c; }}
             data={steps}
-            renderItem={this._renderItem}
+            renderItem={this._renderItem.bind(this)}
             sliderWidth={400}
             itemWidth={ wp('75%')}
           />

@@ -3,6 +3,7 @@ import PhoneInput from '../components/PhoneInput';
 import VerificationInput from '../components/VerificationInput';
 import ProfileInput from '../components/ProfileInput';
 import QuestionsInput from '../components/QuestionsInput';
+import SBESlider from '../components/SBESlider';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export default class Login extends React.Component {
             )
         } else if(stage == 3){
             return(
-                <QuestionsInput advanceToQuestions={(q)=>this.advanceToQuestions(q)} />
+                <SBESlider first={true} advanceToQuestions={(q)=>this.advanceToQuestions(q)}/>
             )
         } else if(stage == 4){
             return(
