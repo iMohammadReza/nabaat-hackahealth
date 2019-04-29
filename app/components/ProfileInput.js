@@ -18,7 +18,7 @@ export default class ProfileInput extends React.Component {
             phone2: '',
             periodDay: '',
             age: '',
-            sex: '',
+            sex: 1,
             loading: false,
         }
     }
@@ -44,7 +44,7 @@ export default class ProfileInput extends React.Component {
     }
 
     sendProfile = async () => {
-      if(this.state.name.length>2 && this.state.phone2.length>6 && this.state.periodDay.length>0 && this.state.age.length>0 && this.state.sex.length>0 ){
+      if(this.state.name.length>2 && this.state.phone2.length>6 && this.state.age.length>0 && this.state.sex.length>0 ){
         this.setState({loading: true})
         let {name, phone2, periodDay, age, sex } = this.state
         let profileReq = this.props.store.AuthStore.webService + 'profile'; // set the profile
@@ -103,13 +103,19 @@ export default class ProfileInput extends React.Component {
                 <Item style={{ width: wp('50%') }}>
                   <Input
                     value={this.state.phone2} 
-                    placeholderTextColor='#d8e4ec' 
+                    placeholderTextColor='#d8e4ec'
+                    keyboardType="numeric"
                     style={styles.input} 
                     placeholder="شماره فرد نزدیک" 
                     onChangeText={(text) => this.onChangePhone2(text)} />
                 </Item>
                 <Item style={{ width: wp('50%') }}>
-                  <Input value={this.state.age} placeholderTextColor='#d8e4ec' style={styles.input} placeholder="سن" onChangeText={(text) => this.onChangeAge(text)} />
+                  <Input 
+                    value={this.state.age} 
+                    keyboardType="numeric"
+                    placeholderTextColor='#d8e4ec' 
+                    style={styles.input} placeholder="سن" 
+                    onChangeText={(text) => this.onChangeAge(text)} />
                 </Item>
                 <Item style={{ width: wp('50%') }}>
                   <Picker
@@ -126,7 +132,13 @@ export default class ProfileInput extends React.Component {
                 </Item>
                   {this.state.sex == 1 ?
                     <Item style={{ width: wp('50%') }}>
-                      <Input value={this.state.periodDay} placeholderTextColor='#d8e4ec' style={styles.input} placeholder="روز شروع عادت ماهانه" onChangeText={(text) => this.onChangePeriodDay(text)} />
+                      <Input 
+                        value={this.state.periodDay} 
+                        placeholderTextColor='#d8e4ec' 
+                        keyboardType="numeric"
+                        style={styles.input} 
+                        placeholder="روز شروع عادت ماهانه" 
+                        onChangeText={(text) => this.onChangePeriodDay(text)} />
                     </Item>
                     :
                     null

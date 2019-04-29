@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, StatusBar, StyleSheet } from 'react-native';
 import { Card, CardItem, Body, Container, Button } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
+import LinearGradient from 'react-native-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import step1 from '../assets/learning/learn_step1.gif';
@@ -60,9 +61,13 @@ export default class SBESlider extends Component {
 
   render () {
       return (
-        <Container style={{backgroundColor: '#ffffff', paddingTop: wp('10%')}}>
-        <StatusBar
-        backgroundColor="white"
+        <Container style={{paddingTop: 10}}>
+                <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
+          <StatusBar
+            backgroundColor="#77b4db"
         barStyle="dark-content"
         translucent={false} />
           <Carousel
@@ -72,6 +77,7 @@ export default class SBESlider extends Component {
             sliderWidth={400}
             itemWidth={ wp('75%')}
           />
+          </LinearGradient>
         </Container>
       );
   }
