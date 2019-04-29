@@ -9,8 +9,39 @@ class DataStorage {
   @observable actions = []
   @observable game = {}
 
-  updateGame() {
-
+  updateGame(value, point) {
+    let req = AuthStore.webService+"game"
+    console.log(point)
+    // point = toString(point)
+    value = JSON.stringify(value)
+    console.log(point, value)
+    fetch(req, {
+      method: 'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: AuthStore.userToken,
+        value: value,
+        point: point.toString()
+      })
+    })
+    .then((response) => response.json().then(data => ({status: response.status, ...data})))
+    .then((responseJson) => {
+      console.log(responseJson)
+      if (responseJson.success) {
+        this.user.score = this.user.score - point
+        console.log(responseJson)
+      } else {
+        ToastAndroid.show("خطا ", ToastAndroid.SHORT)
+      }
+    })
+    .catch((error) => {
+      console.log("getInit error", error)
+      ToastAndroid.show("خطا در برقراری ارتباط", ToastAndroid.SHORT)
+      reject()
+    });
   }
 
   getInit(){

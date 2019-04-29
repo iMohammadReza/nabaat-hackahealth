@@ -10,7 +10,7 @@ export default class Login extends React.Component {
         this.state = {
             mobile: null,
             q: null,
-            stage: 0 // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: the questions
+            stage: 0 // 0: entering the phoneNumber, 1: the verification code, 2: completing the profile, 3: bse, 4: the questions
         }
     }
     
@@ -22,8 +22,12 @@ export default class Login extends React.Component {
         this.setState({ stage: 2 });
     }
 
-    advanceToQuestions(q) {
+    advanceToBSE(q) {
         this.setState({ stage: 3, q });
+    }
+
+    advanceToQuestions() {
+        this.setState({ stage: 4});
     }
 
     render() {
@@ -38,9 +42,13 @@ export default class Login extends React.Component {
             )
         } else if(stage == 2){
             return(
-                <ProfileInput advanceToQuestions={(q)=>this.advanceToQuestions(q)} />
+                <ProfileInput advanceToBSE={(q)=>this.advanceToBSE(q)} />
             )
         } else if(stage == 3){
+            return(
+                <QuestionsInput advanceToQuestions={(q)=>this.advanceToQuestions(q)} />
+            )
+        } else if(stage == 4){
             return(
                 <QuestionsInput  navigation={this.props.navigation}  q={this.state.q} />
             )

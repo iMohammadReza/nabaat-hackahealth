@@ -49,127 +49,55 @@ export default class Game extends React.Component {
       komod: this.props.store.DataStore.game.komod,
       lamp: this.props.store.DataStore.game.lamp,
       pot: this.props.store.DataStore.game.pot,
-      point: this.props.store.DataStore.user.point,
+      point: this.props.store.DataStore.user.score,
     }
     this.onPressItem = this.onPressItem.bind(this);
   }
   
+  updateTheGame=()=>{
+    this.props.store.DataStore.updateGame(
+      {
+        fish01: this.state.fish01,
+        khaze: this.state.khaze,
+        books: this.state.books,
+        chair: this.state.chair,
+        komod: this.state.komod,
+        lamp: this.state.lamp,
+        pot: this.state.pot,
+      },
+      this.state.point);
+  }
+
   onPressItem(item) {
     let { game, user } = this.props.store.DataStore;
-    let { point } = user;
     switch(item) {
       case 'fish01':
-        if(!game.fish01 && user.point > gameObjects.fish01.point){
-          this.setState({ fish01: true, point: point - gameObjects.fish01.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
-        }
+        if(!game.fish01 && user.score > gameObjects.fish01.point)
+          this.setState({ fish01: true, point: user.score - gameObjects.fish01.point }, ()=>this.updateTheGame());
         break;
       case 'khaze':
-        if(!game.khaze && user.point > gameObjects.khaze.point)
-          this.setState({ khaze: true, point: point - gameObjects.khaze.point});
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.khaze && user.score > gameObjects.khaze.point)
+          this.setState({ khaze: true, point: user.score - gameObjects.khaze.point }, ()=>this.updateTheGame());
         break;
       case 'books':
-        if(!game.books && user.point > gameObjects.books.point)
-          this.setState({ books: true, point: point - gameObjects.books.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.books && user.score > gameObjects.books.point)
+          this.setState({ books: true, point: user.score - gameObjects.books.point }, ()=>this.updateTheGame());
         break;
       case 'chair':
-        if(!game.chair && user.point > gameObjects.chair.point)
-          this.setState({ chair: true, point: point - gameObjects.chair.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.chair && user.score > gameObjects.chair.point)
+          this.setState({ chair: true, point: user.score - gameObjects.chair.point }, ()=>this.updateTheGame());
         break;
       case 'komod':
-        if(!game.komod && user.point > gameObjects.komod.point)
-          this.setState({ komod: true, point: point - gameObjects.komod.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.komod && user.score > gameObjects.komod.point)
+          this.setState({ komod: true, point: user.score - gameObjects.komod.point }, ()=>this.updateTheGame());
         break;
       case 'lamp':
-        if(!game.lamp && user.point > gameObjects.lamp.point)
-          this.setState({ lamp: true, point: point - gameObjects.lamp.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.lamp && user.score > gameObjects.lamp.point)
+          this.setState({ lamp: true, point: user.score - gameObjects.lamp.point }, ()=>this.updateTheGame());
         break;
       case 'pot':
-        if(!game.pot && user.point > gameObjects.pot.point)
-          this.setState({ pot: true, point: point - gameObjects.pot.point });
-          this.props.store.DataStore.updateGame({
-            value: {
-              fish01: this.state.fish01,
-              khaze: this.state.khaze,
-              books: this.state.books,
-              chair: this.state.chair,
-              komod: this.state.komod,
-              lamp: this.state.lamp,
-              pot: this.state.pot,
-            },
-            point: this.state.point
-          });
+        if(!game.pot && user.score > gameObjects.pot.point)
+          this.setState({ pot: true, point: user.score - gameObjects.pot.point }, ()=>this.updateTheGame());
         break;
     }
   }

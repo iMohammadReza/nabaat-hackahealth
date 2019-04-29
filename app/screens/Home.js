@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View, FlatList, StatusBar} from 'react-native'
+import {Text, View, FlatList, StatusBar, ToastAndroid} from 'react-native'
 import {inject, observer} from "mobx-react/native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Container, Card, Button } from 'native-base';
@@ -13,8 +13,39 @@ export default class Home extends React.Component {
       }
 
       goGame = () => {
-        console.log("kir")
         this.props.navigation.navigate('Game')
+      }
+
+      gobse = () => {
+        this.props.navigation.navigate('Survey')
+      }
+
+      commit = (type, value, commit_id, point) => {
+        let commitReq = this.props.store.AuthStore.webService + 'commit'; 
+        fetch(commitReq, {
+          method: 'POST',
+          body: JSON.stringify({ token: this.props.store.AuthStore.userToken, type, value, commit_id}),
+          headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((response) => response.json().then(data => ({status: response.status, ...data})))
+        .then((responseJson) => {
+          console.log(responseJson)
+            this.setState({loading: false})
+            if (responseJson.success) {
+              this.props.store.DataStore.user.score=this.props.store.DataStore.user.score+point
+              ToastAndroid.show(point+" امتیاز گرفتی", ToastAndroid.SHORT)
+            } else {
+              ToastAndroid.show("خطا", ToastAndroid.SHORT)
+            }
+        })
+        .catch((error) => {
+          console.log(error)
+          this.setState({loading: false})
+          ToastAndroid.show("خطا در برقراری ارتباط با اینترنت", ToastAndroid.SHORT)
+        });
       }
 
       render() {
@@ -25,8 +56,8 @@ export default class Home extends React.Component {
               backgroundColor="white"
               barStyle="dark-content"
               translucent={false} />
-            <View style={{flexDirection:"row", margin: wp('8%')}} >
-              <Text style={{borderColor:"#ed8687", borderRadius:50, borderWidth: wp('1%'), padding:  wp('4%'), height:  wp('14%'), width:  wp('14%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >27</Text>
+            <View style={{flexDirection:"row", margin: wp('4%')}} >
+              <Text style={{borderColor:"#ed8687", borderRadius:50, borderWidth: wp('2%'), padding:  wp('4%'), height:  wp('16%'), width:  wp('16%'), fontSize:  wp('4%'), textAlign: "center", textAlignVertical: "center"}} >{user.score}</Text>
               <Text style={{alignSelf:"center", flex:1, textAlign:"left", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%')}} >سلام {user.name}</Text>
             </View>
             <View style={{flex:1, padding: wp('8%'), paddingTop:0}}>
@@ -35,26 +66,47 @@ export default class Home extends React.Component {
                   data={[...this.props.store.DataStore.actions,...this.props.store.DataStore.tips]}
                   ListEmptyComponent={
                       <Card style={{flex: 1, margin:48, borderRadius: 8 }}>
-                          <Text style={{fontFamily:"IRANSansMobile", fontSize:12, margin:12, marginBottom:16}} >شما هیچ تیکتی ندارید</Text>
+                          <Text style={{fontFamily:"IRANSansMobile", fontSize:12, margin:12, marginBottom:16}} >برای امروز کافیه</Text>
                       </Card>
                   }
                   renderItem={({item}) => 
-                      <Card style={{flex: 1, margin:48, borderRadius: 8 }}>
+                      <View style={{flex: 1, margin:16, borderRadius: 5, borderColor:"#ed8687", borderWidth:2}}>
                           <View style={{flex:1, flexDirection:"row", margin:12, justifyContent:"space-between"}}>
-                              <View style={{flexDirection:"row"}} >
-                                  <Text style={{flex:0, backgroundColor:item.color, borderRadius:50, color:"white", fontFamily:"IRANSansMobile", fontSize:12, padding:1, paddingLeft:12, paddingRight:12}} >{item.priority}</Text>
-                                  {/* <Text style={{fontFamily:"IRANSansMobile", fontSize:12, marginRight:8, marginLeft:8, color:"grey"}} >گروه: {item.group}</Text> */}
+                            {item.text?
+                              <View style={{flexDirection:"column", flex:1}} >
+                                <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.text.trim()}</Text>
+                                <View style={{flexDirection:"row"}} >
+                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('action', "ok", item._id, item.point)} >
+                                    <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  16, color:"white"}} >نه</Text>
+                                  </Button>
+                                  <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('action', "nok", item._id, item.point)} >
+                                    <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize: 16, color:"white"}} >بله</Text>
+                                  </Button>
+                                </View>
+                                <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.point} امتیاز</Text>
                               </View>
-                              <Text style={{fontFamily:"IRANSansMobile", fontSize:12, color:"grey"}} >{item.changed}</Text>
+                            :
+                              <View style={{flexDirection:"column", flex:1}} >
+                                <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.context.trim()}</Text>
+
+                                <Button style={{flex:1,margin: wp('2%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={()=>this.commit('tip', "ok", item._id, item.point)} >
+                                  <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >خواندم</Text>
+                                </Button>
+                                <Text style={{flex:1, margin:4, borderRadius:50, color:"black", fontFamily:"IRANSansMobile", fontSize:14, padding:1, paddingLeft:12, paddingRight:12}} >{item.point} امتیاز</Text>
+                              </View>
+                            }
                           </View>
                           <Text style={{fontFamily:"IRANSansMobile", fontSize:12, margin:12, marginTop:0, marginBottom:16}} >{item.subject}</Text>
-                      </Card>
+                      </View>
                   }
                 />
               </Card>
             </View>
-            <Button style={{margin: wp('8%'), marginTop:0, backgroundColor:"#ed8687"}} onPress={this.goGame} >
+            <Button style={{margin: wp('8%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"#ed8687"}} onPress={this.goGame} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile_Bold", fontSize:  wp('6%'), color:"white"}} >آکواریوم</Text>
+            </Button>
+            <Button style={{margin: wp('8%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"white"}} onPress={this.gobse} >
+              <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile", fontSize:  wp('6%'), color:"#ed8687"}} >راهنمای خود تستی</Text>
             </Button>
           </Container>
         );
