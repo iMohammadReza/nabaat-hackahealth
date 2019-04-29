@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Dimensions, ImageBackground, Image, StatusBar } from "react-native";
+import { Text, View, Dimensions, StyleSheet, Image, StatusBar } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Input, Form, Item, Button, Container, Spinner } from 'native-base';
 import {inject, observer} from "mobx-react/native";
@@ -64,7 +64,7 @@ export default class PhoneInput extends React.Component {
             barStyle="dark-content"
             translucent={false} />
           <View padder style={{flex:1, justifyContent: 'center', alignItems:"center", margin: '10%', borderWidth: 4, borderColor: '#ed8687'}}>
-            <Image style={{margin: wp('10%'), width: wp('47%'), height: hp('25%') }} source={ phone } />
+            <Image style={styles.image} source={ phone } />
             <Form>
               <Item floatingLabel style={{ width: wp('50%') }}>
                 <Input onSubmitEditing={() => this.sendPhone()} value={this.state.mobile} placeholderTextColor='#ed8687' style={{color: '#ed8687', fontFamily: "IRANSansMobile", fontSize: wp('60%') / hp('2%'), marginTop: wp('5%') }} keyboardType="numeric" placeholder="شماره موبایل" onChangeText={(text) => this.onChangeMobile(text)} />
@@ -94,3 +94,12 @@ export default class PhoneInput extends React.Component {
       );
     }
 }
+
+const styles = StyleSheet.create({
+  image: {
+    
+    width: wp('60%'), 
+    height: wp('60%'), 
+    resizeMode: 'contain'
+  },
+})
