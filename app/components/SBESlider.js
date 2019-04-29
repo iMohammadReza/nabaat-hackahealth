@@ -3,6 +3,7 @@ import { View, Text, Image, StatusBar, StyleSheet } from 'react-native';
 import { Card, CardItem, Body, Container, Button } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
 import {inject, observer} from "mobx-react/native";
+import LinearGradient from 'react-native-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {phonecall} from 'react-native-communications'
 
@@ -40,7 +41,7 @@ export default class SBESlider extends Component {
   _renderItem ({item, index}) {
     let {first} = this.props;
     return (
-      <Card style={{borderRadius: 10}}>
+      <Card style={{borderRadius: 10, marginTop: 50}}>
         <CardItem cardBody style={{borderTopRightRadius: 10, borderTopLeftRadius: 10, overflow: 'hidden'}}>
             <Image source={ item.img } style={{borderRadius: 10, height: wp('75%'), width: null, flex: 1}}/>
         </CardItem>
@@ -72,9 +73,13 @@ export default class SBESlider extends Component {
   render () {
 
       return (
-        <Container style={{backgroundColor: '#ffffff', paddingTop: wp('10%')}}>
-        <StatusBar
-        backgroundColor="white"
+        <Container>
+                <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
+          <StatusBar
+            backgroundColor="#77b4db"
         barStyle="dark-content"
         translucent={false} />
           <Carousel
@@ -84,6 +89,7 @@ export default class SBESlider extends Component {
             sliderWidth={400}
             itemWidth={ wp('75%')}
           />
+          </LinearGradient>
         </Container>
       );
   }

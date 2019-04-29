@@ -3,6 +3,7 @@ import {Text, View, FlatList, StatusBar, ToastAndroid} from 'react-native'
 import {inject, observer} from "mobx-react/native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Container, Card, Button } from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
 @inject('store') @observer
 export default class Home extends React.Component {
@@ -53,8 +54,12 @@ export default class Home extends React.Component {
         let {user, tips, actions} = this.props.store.DataStore
         return (
           <Container padder style={{backgroundColor:"white"}} >
-            <StatusBar
-              backgroundColor="white"
+                            <LinearGradient
+        colors={['#77b4db', '#da62b7']}
+        style={{flex: 1}}
+      >
+          <StatusBar
+            backgroundColor="#77b4db"
               barStyle="dark-content"
               translucent={false} />
             <View style={{flexDirection:"row", margin: wp('6%')}} >
@@ -109,6 +114,7 @@ export default class Home extends React.Component {
             <Button style={{margin: wp('6%'), marginTop:0, marginBottom: wp('4%'), backgroundColor:"white"}} onPress={this.gobse} >
               <Text style={{alignSelf:"center", flex:1, textAlign:"center", fontFamily:"IRANSansMobile", fontSize:  wp('6%'), color:"#ed8687"}} >راهنمای خود تستی</Text>
             </Button>
+            </LinearGradient>
           </Container>
         );
      }
